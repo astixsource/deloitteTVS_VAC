@@ -151,8 +151,8 @@
 
                         </li>
 
-                        <li>The total time required to complete all four exercises is 2 hours. You can complete them anytime within the assessment window (from [date] to [date]), after which the assessments will no longer be accessible.</li>
-                         <li>You do not need to complete all the exercises in one go—you can take them at different times as per your convenience. However, once you start an exercise, you must complete it in a single sitting, as you will not be able to pause and return to it later.</li>
+                        <li><strong>The total time required to complete all four exercises is 1 hour 40 minutes. You can complete them anytime within the assessment window (from [date] to [date]), after which the assessments will no longer be accessible.</strong></li>
+                        <li><strong>You don’t need to complete all the exercises in one go—you can take them at different times as per your convenience. However, once you start an exercise, you must complete it in a single sitting, as you won’t be able to pause and return to it later.</strong></li>
                         
                         
                     </ul>
@@ -173,13 +173,16 @@
                 <div class="modal-body pt-0">
                     <h3 class="small-heading">Instructions to set you up for success:</h3>
                    <p>For each assessment, please read the section <strong>“Your task”</strong> to understand the specific requirements from you.</p>
-                    <p>Use the <strong>“Start Assessment”</strong> button to begin attempting the assessment – time will start from the moment you click “Start Assessment”. Once you click, you will need to complete the full assessment within the allotted time. Please ensure you DO NOT close the window once your assessment starts as the time will still be counting down even if the window is closed.</p>
-                    <p>Once you have submitted your responses, you cannot re-attempt the assessment.</p>
-                    <p>You don’t need to complete all the exercises in one go—you can take them at different times as per your convenience within the assessment window.<strong> However, once you start an exercise, you must complete it in a single sitting, as you won’t be able to pause and return to it later.</strong></p>
-                    <p>You will need to be mindful of the time while attempting the assessment – on exhaustion of the assigned time, the assessment will be automatically submitted, and you will be returned to the overall assessment page.</p>
+                  <p>Use the <strong>“Start Assessment”</strong> button to begin attempting the assessment – time will start from the moment you click <strong>“Start Assessment”</strong>. Once you click, you will need to complete the full assessment within time. <strong> Please ensure you DO NOT close the window once your assessment starts as the time will still be counting down even if the window is closed.</strong></p>
+                  <p>Once you have submitted your responses, you cannot re-attempt the assessment.</p>
+                    <p><strong>You don’t need to complete all the exercises in one go—you can take them at different times as per your convenience within the assessment window. However, once you start an exercise, you must complete it in a single sitting, as you won’t be able to pause and return to it later</strong></p>
+                    <p>You will need to be mindful of the time while attempting the assessment – on exhaustion of the assigned time, the assessment will be automatically submitted and you will be returned to the overall assessment page.</p>
                     <p>You may face situations where you may not have all requisite information. In such case, you are advised to make assumptions if necessary. Also, you can use your understanding of the workplace practices and norms.</p>
-                 <p>Tab switching is restricted during the assessment. Each such attempt will result in an automatic logout. After three violations, your access will be deactivated, and you will be unable to continue the assessment</p>
-               
+                    <p><strong>Tab switching is restricted during the assessment. Each such attempt will result in an automatic logout. After three violations, your access will be deactivated, and you will be unable to continue the assessment.</strong></p>
+                    <p><strong>Maintain an active camera connection throughout the assessment. Any camera disconnections may result in your report being flagged for leadership review.</strong></p>
+                    <p><strong>Do not attempt to copy and paste content or seek external help. Unauthorized actions may lead to your report being flagged for leadership review</strong></p>
+                    <p><strong>Ensure you are in a well-lit area where your face is clearly visible, and choose a quiet location to minimize background noise interference</strong></p>
+
                 </div>
                     <div class="mt-3 text-center">
                         <input id="Button2" type="button" value="Next" class="btns btn-submit" onclick="closePopup();" />
