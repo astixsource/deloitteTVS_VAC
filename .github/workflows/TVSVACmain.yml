@@ -24,7 +24,7 @@ jobs:
         run: nuget restore Deloitte_TVS_VAC.sln
 
       - name: Build the solution
-        run: msbuild "D:\a\Deloitte_TVS_VAC\Deloitte_TVS_VAC\Deloitte_TVS_VAC.sln" /p:Configuration=Debug /p:Platform="Any CPU"
+        run: msbuild "D:\a\deloitteTVS_VAC\Deloitte_TVS_VAC\Deloitte_TVS_VAC.sln" /p:Configuration=Debug /p:Platform="Any CPU"
 
 
       #- name: Run Unit Tests
