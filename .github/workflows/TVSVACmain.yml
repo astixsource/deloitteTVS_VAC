@@ -24,7 +24,8 @@ jobs:
         run: nuget restore Deloitte_TVS_VAC.sln
 
       - name: Build the solution
-        run: msbuild Deloitte_TVS_VAC.sln /nologo /verbosity:m /p:Configuration=Release
+        run: msbuild "D:\a\deloitteTVS_VAC\deloitteTVS_VAC\Deloitte_TVS_VAC.sln" /p:Configuration=Release /p:Platform="Any CPU"
+
 
       #- name: Run Unit Tests
       #  run: dotnet test Deloitte_TVS_VAC.sln --logger "trx;LogFileName=TestResults.trx" --verbosity normal
