@@ -21,13 +21,13 @@ jobs:
         uses: NuGet/setup-nuget@v1.0.5
 
       - name: Restore NuGet packages
-        run: nuget restore D:\a\deloitteTVS_VAC\Deloitte_TVS_VAC.sln
+        run: nuget restore Deloitte_TVS_VAC.sln
 
       - name: clean the solution
-        run: msbuild D:\a\deloitteTVS_VAC\Deloitte_TVS_VAC.sln /t:Clean
+        run: msbuild Deloitte_TVS_VAC.sln /t:Clean
 
       - name: Build the solution
-        run: msbuild D:\a\deloitteTVS_VAC\Deloitte_TVS_VAC.sln /p:Configuration=Debug /p:Platform="Any CPU"
+        run: msbuild Deloitte_TVS_VAC.sln /p:Configuration=Release /p:Platform="Any CPU"
 
 
       #- name: Run Unit Tests
