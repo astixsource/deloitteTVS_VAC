@@ -19,7 +19,7 @@ public class clsADUserInfo
 {
 
     private string clientId = ConfigurationSettings.AppSettings["ida:ClientId"];
-    private string appKey = ConfigurationSettings.AppSettings["ida:ClientSecret"];
+    private string appKey = Convert.ToString(HttpContext.Current.Application["SSO_clientSecret"]);
     private string TenantId = ConfigurationSettings.AppSettings["ida:TenantId"];
     private string aadInstance = EnsureTrailingSlash(ConfigurationSettings.AppSettings["ida:AADInstance"]);
     private string graphResourceID = "https://graph.microsoft.com";//"https://graph.windows.net";
@@ -103,8 +103,8 @@ public class clsADUserInfo
             var request = new RestRequest(Method.POST);
             request.AddHeader("Content-Type", "application/x-www-form-urlencoded");
             request.AddParameter("grant_type", "password");
-            request.AddParameter("client_id", "2d7d9d54-bbe0-4b66-b4aa-da79fe2b6f8f");
-            request.AddParameter("client_secret", "ryo8Q~J~HN8EA4U5MWV6daTWTYbxPsqhzSY8Nc4Y");
+            request.AddParameter("client_id", clientId);
+            request.AddParameter("client_secret", appKey);
             request.AddParameter("scope", "https://graph.microsoft.com/.default");
             request.AddParameter("userName", userName);
             request.AddParameter("password", password);

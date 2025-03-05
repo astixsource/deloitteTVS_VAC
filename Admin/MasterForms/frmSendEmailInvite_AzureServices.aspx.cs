@@ -350,7 +350,7 @@ public partial class frmSendEmailInvite : System.Web.UI.Page
             MailMessage msg = new MailMessage();
             msg.From = new MailAddress("VAC Manager<" + fromMail + ">");
 
-            var connectionString = "endpoint=https://astixemailcommunication.india.communication.azure.com/;accesskey=eY/ca2ZawDDXmJx1KvbW0FXw5CbMmucrsW+mjBqE9urodCYTNJeiBeRq3vjX/s7cVlCymgjphLEPbeF9IJRSuw==";
+            var connectionString = "endpoint=https://astixemailcommunication.india.communication.azure.com/;accesskey=" + Convert.ToString(HttpContext.Current.Application["AzureMailconnectionString"]);
             var emailClient = new EmailClient(connectionString);
 
             var emailRecipients = new EmailRecipients();
