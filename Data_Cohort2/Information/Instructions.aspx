@@ -92,7 +92,7 @@
             </div>
 
             <div class="col-md-3">
-                <div id="dv2" class="panel-box panel-box-default" onclick="openPopup('div2');"   flg="1">
+                <div id="dv2" class="panel-box panel-box-default disabled" onclick="openPopup('div2');"   flg="1">
                     <%--<div class="box-title" style="background-image: url('../../Images/instr-2.png')">--%>
                     <div class="panel-box-title">
                         <img src="../../Images/instr-2.png" />
@@ -107,7 +107,7 @@
             </div>
 
             <div class="col-md-3">
-                <div id="dv3" class="panel-box panel-box-default" onclick="openPopup('div3');"  flg="1">
+                <div id="dv3" class="panel-box panel-box-default disabled" onclick="openPopup('div3');"  flg="1">
                     <%--<div class="box-title" style="background-image: url('../../Images/instr-3.png')">--%>
                     <div class="panel-box-title">
                         <img src="../../Images/instr-3.png" />
