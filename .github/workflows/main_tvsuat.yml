@@ -25,7 +25,23 @@ jobs:
         uses: NuGet/setup-nuget@v1.0.5
 
       - name: Restore NuGet packages
-        run: nuget restore
+        run: nuget restore Deloitte_TVS_VAC.sln
+
+      - name: 🔍 Verify Solution File Exists
+        run: |
+          if (!(Test-Path "D:\a\deloitteTVS_VAC\Deloitte_TVS_VAC.sln")) {
+            Write-Host "ERROR: Solution file not found!"
+            exit 1
+          }
+
+      - name: 🚀 Build Solution
+        run: msbuild Deloitte_TVS_VAC.sln /p:Configuration=Release /p:Platform="Any CPU" /t:Build
+
+      - name: 📤 Publish Build Artifacts
+        run: |
+         mkdir -p D:\a\published
+         msbuild Deloitte_TVS_VAC.sln /p:DeployOnBuild=true /p:PublishProfile=Release /p:OutputPath="D:\a\published"
+
 
       - name: Publish to folder
         run: msbuild Deloitte_TVS_VAC.sln /nologo /verbosity:m /t:Build /t:pipelinePreDeployCopyAllFilesToOneFolder /p:_PackageTempDir="\published\"
