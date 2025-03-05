@@ -23,6 +23,9 @@ jobs:
       - name: Restore NuGet packages
         run: nuget restore Deloitte_TVS_VAC.sln
 
+      - name: clean the solution
+        run: msbuild Deloitte_TVS_VAC.sln /t:Clean
+
       - name: Build the solution
         run: msbuild Deloitte_TVS_VAC.sln /p:Configuration=Debug /p:Platform="Any CPU"
 
