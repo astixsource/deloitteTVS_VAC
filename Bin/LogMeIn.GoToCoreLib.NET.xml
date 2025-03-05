@@ -1,0 +1,237 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>LogMeIn.GoToCoreLib.NET</name>
+    </assembly>
+    <members>
+        <member name="T:LogMeIn.GoToCoreLib.Api.OAuth2Api">
+            <summary>
+            Class containing methods for OAuth2 authentication.
+            </summary>
+        </member>
+        <member name="M:LogMeIn.GoToCoreLib.Api.OAuth2Api.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the OAuth2Api class using the
+            default endpoint base url for the services being accessed.
+            </summary>
+            <param name="consumerKey">The app's consumer key (client ID).</param>
+            <param name="consumerSecret">The app's consumer secret (client secret).</param>
+        </member>
+        <member name="M:LogMeIn.GoToCoreLib.Api.OAuth2Api.#ctor(System.String,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the OAuth2Api class using an endpoint base
+            url other than the default. Use this constructor only if you should need
+            to override the default endpoint base url.
+            </summary>
+            <param name="basePath">The endpoint base url for the services being accessed.</param>
+            <param name="consumerKey">The app's consumer key (client ID).</param>
+            <param name="consumerSecret">The app's consumer secret (client secret).</param>
+        </member>
+        <member name="M:LogMeIn.GoToCoreLib.Api.OAuth2Api.GetOAuth2AuthorisationUrl(System.String)">
+            <summary>
+            Returns the authorization URL where the browser will be directed givent the consumer key
+            of the app and a redirect Url.
+            </summary>
+            <param name="clientId">The consumer (API) key of the application.</param>
+            <returns>The authorization URL where the browser will be directed.</returns>
+        </member>
+        <member name="M:LogMeIn.GoToCoreLib.Api.OAuth2Api.GetResponseKey(System.Uri)">
+            <summary>
+            Gets the Response Key from the OAuth flow contained in the user redirection back to the application.
+            This must be exchanged for an Access Token.
+            </summary>
+            <param name="navigatedUrl">The user redirection.</param>
+            <returns>The response key.</returns>
+        </member>
+        <member name="M:LogMeIn.GoToCoreLib.Api.OAuth2Api.GetAccessTokenResponse(System.String)">
+            <summary>
+            Exchanges the response key for an access token.
+            </summary>
+            <param name="responseKey">The response key.</param>
+            <returns>Information containing the access token and other details about the user's product account.</returns>
+        </member>
+        <member name="M:LogMeIn.GoToCoreLib.Api.OAuth2Api.DirectLogin(System.String,System.String)">
+            <summary>
+            Direct Login
+            Generates an access token from user credentials.
+            </summary>
+            <param name="username">The GoTo product user email.</param>
+            <param name="password">The GoTo product user password.</param>
+            <returns>Information containing the access token and other details about the user's product account.</returns>
+            <exception cref="T:LogMeIn.GoToCoreLib.Api.Common.ApiException">If an error occurred during the access token generation.</exception>
+        </member>
+        <member name="M:LogMeIn.GoToCoreLib.Api.OAuth2Api.GetAccessTokenUsingRefreshToken(System.String)">
+            <summary>
+            Exchanges the refresh token for an access token.
+            </summary>
+            <param name="refreshToken">The refresh token from the access token response.</param>
+            <returns>The refresh token from the access token response.</returns>
+            <exception cref="T:LogMeIn.GoToCoreLib.Api.Common.ApiException">If an error occurred during exchanging the refresh token for an access token.</exception>
+        </member>
+        <member name="P:LogMeIn.GoToCoreLib.Api.OAuth2Api.Invoker">
+            <summary>
+            Gets the API invoker
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToCoreLib.Api.OAuth2Api.BasePath">
+            <summary>
+            Gets the endpoint base url for the services being accessed
+            </summary>
+        </member>
+        <member name="T:LogMeIn.GoToCoreLib.Api.Common.ApiException">
+            <summary>
+            The exception thrown when an API error occurs.
+            </summary>
+        </member>
+        <member name="M:LogMeIn.GoToCoreLib.Api.Common.ApiException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the ApiException class.
+            </summary>
+            <param name="message">A string describing the error.</param>
+        </member>
+        <member name="M:LogMeIn.GoToCoreLib.Api.Common.ApiException.#ctor(System.Int32,System.String)">
+            <summary>
+            Initializes a new instance of the ApiException class.
+            </summary>
+            <param name="errorCode">The status code of the error that occured.
+            Can be HTML status code or another number for other types of exceptions.</param>
+            <param name="message">A string describing the error.</param>
+        </member>
+        <member name="M:LogMeIn.GoToCoreLib.Api.Common.ApiException.#ctor(System.Int32,System.Exception)">
+            <summary>
+            Initializes a new instance of the ApiException class.
+            </summary>
+            <param name="errorCode">The status code of the error that occured.
+            Can be HTML status code or another number for other types of exceptions.</param>
+            <param name="e">The inner exception</param>
+        </member>
+        <member name="M:LogMeIn.GoToCoreLib.Api.Common.ApiException.#ctor(System.Exception)">
+            <summary>
+            Initializes a new instance of the ApiException class.
+            </summary>
+            <param name="e">The inner exception</param>
+        </member>
+        <member name="P:LogMeIn.GoToCoreLib.Api.Common.ApiException.ErrorCode">
+            <summary>
+            Gets the status code of the error that occurred.
+            Can be HTML status code or another number for other types of exceptions.
+            </summary>
+        </member>
+        <member name="T:LogMeIn.GoToCoreLib.Api.Common.ApiInvoker">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:LogMeIn.GoToCoreLib.Api.Common.ApiInvoker.GetInstance">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:LogMeIn.GoToCoreLib.Api.Common.ApiInvoker.AddDefaultHeader(System.String,System.String)">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:LogMeIn.GoToCoreLib.Api.Common.ApiInvoker.EscapeString(System.String)">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:LogMeIn.GoToCoreLib.Api.Common.ApiInvoker.Deserialize(System.String,System.Type)">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:LogMeIn.GoToCoreLib.Api.Common.ApiInvoker.Serialize(System.Object)">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:LogMeIn.GoToCoreLib.Api.Common.ApiInvoker.InvokeAPI(System.String,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.String},System.Object,System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.Dictionary{System.String,System.Object},System.Type,System.String)">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="T:LogMeIn.GoToCoreLib.Api.Model.TokenResponse">
+            <summary>
+             
+            </summary>
+        </member>
+        <member name="M:LogMeIn.GoToCoreLib.Api.Model.TokenResponse.ToString">
+            <summary>
+            Returns a string representing the current object.
+            </summary>
+            <returns>The Json serialization of the current object.</returns>
+        </member>
+        <member name="P:LogMeIn.GoToCoreLib.Api.Model.TokenResponse.access_token">
+            <summary>
+            Oauth access token
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToCoreLib.Api.Model.TokenResponse.expires_in">
+            <summary>
+            Expiration time in seconds (typically 356 days)
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToCoreLib.Api.Model.TokenResponse.refresh_token">
+            <summary>
+            The token to use to obtain a new access token, for example, if the current access token has expired. The refresh token is valid for 13 months.
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToCoreLib.Api.Model.TokenResponse.organizer_key">
+            <summary>
+            GoTo product user organizer key
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToCoreLib.Api.Model.TokenResponse.account_key">
+            <summary>
+            GoTo product account key (may be blank)
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToCoreLib.Api.Model.TokenResponse.account_type">
+            <summary>
+            GoTo product type, i.e. personal or corporate (may be missing or blank)
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToCoreLib.Api.Model.TokenResponse.firstName">
+            <summary>
+            GoTo product user organizer first name
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToCoreLib.Api.Model.TokenResponse.lastName">
+            <summary>
+            GoTo product user organizer last name
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToCoreLib.Api.Model.TokenResponse.email">
+            <summary>
+            GoTo product user organizer email
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToCoreLib.Api.Model.TokenResponse.version">
+            <summary>
+            The version of the access token
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToCoreLib.Api.Model.TokenResponse.token_type">
+            <summary>
+            The type of token
+            </summary>
+        </member>
+        <member name="T:LogMeIn.GoToCoreLib.Api.Model.TokenResponse.Account_typeEnum">
+            <summary>
+            GoTo product type, i.e. personal or corporate (may be missing or blank)
+            </summary>
+        </member>
+        <member name="F:LogMeIn.GoToCoreLib.Api.Model.TokenResponse.Account_typeEnum.personal">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="F:LogMeIn.GoToCoreLib.Api.Model.TokenResponse.Account_typeEnum.corporate">
+             <summary>
+            
+             </summary>
+        </member>
+    </members>
+</doc>

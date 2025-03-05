@@ -1,0 +1,300 @@
+﻿<%@ Master Language="VB" CodeFile="LeftPanel.master.vb" Inherits="Data_MasterPage_Panel" %>
+
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
+<!DOCTYPE html>
+<html>
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    <title>Assessment</title>
+    <link href="Images/EYlogo.ico" rel="shortcut icon" type="image/x-icon" />
+
+    <!-- Latest compiled and minified CSS -->
+    <link href="../../CSS/font-awesome.css" rel="stylesheet" type="text/css" />
+    <link href="../../CSS/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="../../CSS/jquery-ui.css" rel="stylesheet" />
+    <link href="../../CSS/style.css" rel="stylesheet" type="text/css" />
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="../../Scripts/jquery.min-3.6.0.js" type="text/javascript"></script>
+    <script src="../../Scripts/popper.min.js" type="text/javascript"></script>
+    <script src="../../Scripts/bootstrap.min.js" type="text/javascript"></script>
+    <script src="../../Scripts/jquery-ui.js" type="text/javascript"></script>
+    <script src="../../Scripts/validation.js" type="text/javascript"></script>
+    <script src="../../Scripts/jquerysession.js" type="text/javascript"></script>
+
+    <!-- For All Device Jquery -->
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+    </asp:ContentPlaceHolder>
+
+
+    <script type="text/javascript">
+        $(function () {
+            $("img.bg-img").hide();
+            var $url = $("img.bg-img").attr("src"),
+                navbarh = ($(".main-header").outerHeight());
+
+            $('.full-background').css({ 'backgroundImage': 'url(' + $url + ')', 'opacity': '.35' });
+
+            $('.main-box').css({
+                "min-height": $(window).height() - (navbarh + 22),
+                'margin-top': navbarh
+            });
+            $('[data-toggle="tooltip"]').tooltip();
+            $('.main-sidebar').css({
+                "height": "100%"
+            });
+        })
+    </script>
+    <script type="text/javascript">
+        function fnExit() {
+            window.location.href = '<%=System.Configuration.ConfigurationManager.AppSettings("TestURL") %>'
+        }
+
+        history.pushState(null, null, document.URL);
+        window.addEventListener('popstate', function () {
+            history.pushState(null, null, document.URL);
+
+        });
+
+        window.onload = function () {
+            setInterval("KeepSessionAlive()", 30000)
+        }
+
+        function KeepSessionAlive() {
+            url = "../../KeepSessionAlive.ashx?";
+            var xmlHttp = new XMLHttpRequest();
+            xmlHttp.open("GET", url, true);
+            xmlHttp.send();
+        }
+
+        function fnMenu(flg) {
+            var ids = "";
+            if (flg == 1) {
+                ids = "contant_dv1"
+            }
+            else if (flg == 2) {
+                ids = "contant_dv2"
+            }
+            else if (flg == 3) {
+                ids = "contant_dv3"
+            }
+            else if (flg == 4) {
+                ids = "contant_dv4"
+            }
+            else if (flg == 5) {
+                ids = "contant_dv5"
+            }
+            else if (flg == 6) {
+                ids = "contant_dv6"
+            }
+            else if (flg == 7) {
+                ids = "contant_dv7"
+            }
+            else if (flg == 8) {
+                window.location.href = "../Exercise/ExerciseMain.aspx?MenuId=" + MaxInd;
+            }
+
+            $("#" + ids).dialog({
+                title: "",
+                width: "80%",
+                height: $(window).height() - 135,
+                position: { my: 'center', at: 'center', of: window },
+                modal: true,
+                draggable: false,
+                resizable: false
+            });
+        }
+        function fnRole() {
+            $('#role').hide();
+            $('#structure').fadeIn(200);
+        }
+        function fnStructure() {
+            $('#structure').hide();
+            $('#role').fadeIn(200);
+        }
+    </script>
+    <!-- WARNING: Respond.js doesn't work if you view the page via file: -->
+    <!--[if lt IE 9]>
+  <script src="Scripts/html5shiv.min.js"></script>
+  <script src="Scripts/respond.min.js"></script>
+<![endif]-->
+</head>
+<body>
+    <form id="form1" runat="server">
+        <ajaxToolkit:ToolkitScriptManager runat="server" ID="scriptManager1" EnablePageMethods="true">
+        </ajaxToolkit:ToolkitScriptManager>
+
+        <div class="wrapper fixed">
+            <div class="main-header">
+                <div class="container">
+                    <!-- Logo -->
+                    <a href="#" class="logo">
+                        <!-- logo for regular state and mobile devices -->
+                        <span class="logo-lg">
+                            <asp:Image ID="Image1" runat="server" ImageUrl="~/Images/TVS_Logo.svg" alt="TVSM Motor Logo" title="logo" />
+                        </span></a>
+                    <!-- Header Navbar: style can be found in header.less -->
+                    <div class="navbar-right">
+                        <div class="timer-panel">
+                            <asp:ContentPlaceHolder ID="ContentTimer" runat="server">
+                            </asp:ContentPlaceHolder>
+                        </div>
+                        <span class="logo">
+                            <asp:Image ID="imgLogo2" runat="server" ImageUrl="~/Images/deloitte.svg" title="logo" />
+                        </span>
+                        <ul class="user_nav">
+                            <li><a href="##" class="fa fa-sign-out" rel="tooltip" data-placement="bottom" onclick="fnExit()" id="liExit" title="Exit"></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!------------------------// HEADER END HERE //------------------------>
+            <div class="container-fluid">
+                <div class="container main-box clearfix">
+                    <div class="main-sidebar">
+                        <ul id="ulMenu" class="sidebar-menu">
+                            <li class="header-menu" id="li_0">BACKGROUND INFORMATION</li>
+                            <li class="has-menu active" id="li_1" onclick="fnMenu(1,this)">Introduction</li>
+                            <li class="has-menu" id="li_2" onclick="fnMenu(2,this)">Core Values</li>
+                            <li class="has-menu" id="li_3" onclick="fnMenu(3,this)">Organisation Structure</li>
+                            <li class="has-menu" id="li_4" onclick="fnMenu(4,this)">Market Share</li>
+                            <li class="has-menu" id="li_5" onclick="fnMenu(5,this)">Dealer Distribution</li>
+                            <li class="has-menu" id="li_6" onclick="fnMenu(6,this)">Changing Landscape</li>
+                            <li class="has-menu" id="li_7" onclick="fnMenu(7,this)">Future of MotorTek</li>
+                            <li class="has-menu" id="li_8" onclick="fnMenu(8,this)">My Task</li>
+                            <%--<li class="has-menu active" id="li_1" onclick="fnMenu(1)">BASE</li>
+                        <li class="has-menu active" id="li_2" onclick="fnMenu(2)">MARKET SHARE</li>
+                        <li class="has-menu active" id="li_3" onclick="fnMenu(3)">SALES</li>
+                        <li class="has-menu active" id="li_4" onclick="fnMenu(4)">FUTURE OF BASE</li>
+                        <li class="has-menu active" id="li_5">MY TASKS</li>        --%>
+                        </ul>
+                    </div>
+                    <div class="content-wrapper">
+                        <asp:ContentPlaceHolder ID="ConatntMatterRight" runat="server">
+                        </asp:ContentPlaceHolder>
+                    </div>
+                </div>
+            </div>
+            <!------------------------//End main contant HERE //------------------------>
+        </div>
+
+        <div id="contant_dv1" style="display: none">
+            <div class="section-title">
+                <h3 class="text-center">Introduction</h3>
+                <div class="title-line-center"></div>
+            </div>
+
+            <p>MotorTek  India Ltd, (MIL) made its initial foray into India in 1983 as an Indo-Japan  joint-venture. In August 1998, it became a 100% subsidiary of MotorTek Co. Ltd.  (MCL), Japan.</p>
+            <p>It  is currently, the third largest motorcycle company in the country with a  revenue of 18,000 crores. The vision of the organization is to stay one among  the top three automotive manufacturers in India and one among the top five in  Asia. </p>
+            <p>They  have a product range of 7 motorbikes and 9 scooters of which 2 are premium  motorbikes and one is an electric scooter. The product portfolio includes  Sports models such as Blue-Core Technology enabled motorbikes and Fuel Injected  models. </p>
+            <p>MotorTek&rsquo;s  manufacturing facilities comprise two state of the art plants at Nasik  (Maharashtra) and Kanchipuram (Tamil Nadu). The infrastructure at these plants  supports production of two-wheelers, and parts for the domestic as well as  overseas markets. Through a combination of innovative product development and  effective customer service, the company has grown to become one of the trusted  brands in India. </p>
+            <p>MotorTek  is highly customer-driven and has a country-wide network of over 2,200 customer  touch-points including 500 plus dealers.</p>
+            <p>MIL  is a 100% subsidiary of MCL and functions as the regional headquarters and  corporate control body of India business operations for MCL. MIL is responsible  for Corporate Planning &amp; Strategy, Business Planning &amp; Business  Expansion and Quality &amp; Compliance Assurance of MotorTek Co. Ltd. MIL  supports MCL to market and sell its motorcycles &amp; scooters in domestic as  well as export markets.</p>
+            <p>MotorTek Research  &amp; Development Pvt. Ltd. (MRDL) is a 100% subsidiary of MIL and has been  established to provide R&amp;D and Product development services to MIL for its  domestic as well as export markets.</p>
+        </div>
+
+        <div id="contant_dv2" style="display: none">
+            <div class="section-title">
+                <h3 class="text-center">Core Values</h3>
+                <div class="title-line-center"></div>
+            </div>
+            <p>The  motor industry has become increasingly competitive with several players  struggling to compete for market share. Indeed, some of the larger  manufacturers in the country have faded away over the last 25 years.  There is a concern amongst those that remain  that their future is by no&nbsp;means assured and that there is no room for  complacency if they need to thrive in this market. </p>
+            <p>MotorTek  is driven by its values of <strong>&ldquo;Quality</strong>&rdquo; and <strong>&ldquo;Innovation&rdquo; </strong>to retain  its brand promise and market position. </p>
+            <p><strong>Values  of the organisation</strong></p>
+            <ol>
+                <li><strong>Customer Centricity: </strong>The  organisation is committed to producing innovative, easy to handle,  environment-friendly products, backed by reliable customer service. It invests  in extensive research and development to anticipate customer needs and deliver  innovative and quality products.</li>
+                <li><strong>Innovation: </strong>The  company has always believed in technology driven solutions and thus engages in  honing and sustaining its cutting-edge technology by constantly benchmarking  against international leaders.</li>
+                <li><strong>Quality Orientation</strong>:  Focus on quality has resulted in the organisation adopting TQM- Total Quality  Management. This has enabled the team to not only focus on results but also on  the process.</li>
+                <li><strong>People: </strong>The organisation is  investing heavily on building capabilities to realize its vision and at the  same time improving job satisfaction of employees.</li>
+            </ol>
+        </div>
+
+        <div id="contant_dv3" style="display: none">
+            <div class="section-title">
+                <h3 class="text-center">Organisation Structure</h3>
+                <div class="title-line-center"></div>
+            </div>
+            <ol>
+                <li>MotorTek India Ltd (MIL) is  headed by Ashish Malhotra, the Chairman.</li>
+                <li>Gautam  Venkatesh, the Managing Director is responsible for 7 core departments. Each  department is led by the respective Department Head.
+                    <div class="text-center">
+                        <img src="../../Images/mt-background-1.jpg" class="img-thumbnail mb-3" />
+                    </div>
+                </li>
+                <li>MotorTek Research &amp; Development Pvt. Ltd.  (MRDL) is headed by Sanjeev Ghani, the Managing Director.
+                    <div class="text-center">
+                        <img src="../../Images/mt-background-2.jpg" class="img-thumbnail" />
+                    </div>
+                </li>
+            </ol>
+        </div>
+
+        <div id="contant_dv4" style="display: none">
+            <div class="section-title">
+                <h3 class="text-center">Market Share</h3>
+                <div class="title-line-center"></div>
+            </div>
+            <p>The  Indian market for two-wheelers is quite substantial, with around 220 million  vehicles on the road. &nbsp;With around 16 million units sold every year, it is  one of the world&rsquo;s largest. Three in every ten two wheelers sold in the country  are used ones. So, there are thriving new and used 2-wheeler markets as  well. </p>
+            <p>MotorTek has 4 major  competitors – TruMobile, Nakamura, Puritzo and Argent. Their market share for  the current year is given below.</p>
+            <div class="text-center">
+                <img src="../../Images/mt-background-3.jpg" class="img-thumbnail w-75" />
+            </div>
+        </div>
+
+        <div id="contant_dv5" style="display: none">
+            <div class="section-title">
+                <h3 class="text-center">Dealer Distribution</h3>
+                <div class="title-line-center"></div>
+            </div>
+            <ol>
+                <li>MotorTek dealer network is  made up of a series of franchised dealerships, which vary from  single&nbsp;sites to multisite dealerships with 5-6 outlets.&nbsp; Although the  franchises are independent operators,&nbsp;they are required to abide by  certain policy and procedural guidelines laid down by MIL.</li>
+                <li>Currently, MotorTek has  around 500 dealers spread out across the country, as indicated by the table  below, which&nbsp;also shows the dispersion of competitor dealerships across  India.</li>
+                <li>Dealer outlets vary in size  and activity.&nbsp; Main dealers offer sales, servicing, and parts  operations,&nbsp;whilst other dealerships are smaller and tend to focus mainly  on retail sales.&nbsp;</li>
+            </ol>
+            <h4 class="small-heading">Sales  Across Regions</h4>
+            <ol>
+                <li>As the dealer outlets vary  across the country in terms of size, the number of units they sell  also&nbsp;varies. In addition, there are different trends across the  country.</li>
+                <li>Given below is the  graph showing the sales across 4 regions for MotorTek in the last 12 months 
+	               <div class="text-center">
+                       <img src="../../Images/mt-background-4.jpg" class="img-thumbnail w-75" />
+                   </div>
+                </li>
+            </ol>
+            <p>MotorTek  has been concerned about sales specifically in the EAST region as it is low  compared to other regions. Whilst they understand that there can be differences  across geographies, there is a need to understand the possible reasons and take  measures to improve sales in that region. </p>
+        </div>
+
+        <div id="contant_dv6" style="display: none">
+            <div class="section-title">
+                <h3 class="text-center">Changing Landscape</h3>
+                <div class="title-line-center"></div>
+            </div>
+            <p>The  automotive industry is drastically changing due to the following triggers:</p>
+            <p><strong>Digitization </strong>Digital commerce technologies are disrupting  the automobile industry by unlocking greater efficiencies, personalization, and  cost savings.  Automobiles,  today, are safer, user-friendly and comes with several features that improve  their value and usefulness for automobile owners.&nbsp;Modern automobiles can  offer much more than driving/riding one from one point to another, just like  modern cell phones can perform more than just a call.</p>
+            <p><strong>Sustainability</strong> With the human impact on climate causing harmful effects on the environment,  every industry is turning towards more environmentally friendly technology.  &nbsp;Electric vehicles are gaining immense popularity nowadays all over the  world&nbsp;to contribute to the cause. Governments are working towards creating  the infrastructure/electric charging platforms to facilitate the change, along  with offering subsidies, wherever necessary.</p>
+            <p><strong>Customer  Preferences</strong> OEMs are responding to the new  dimensions of mobility (connected, autonomous, shared and electric), new forms  of ownership and an increased environmental focus.</p>
+            <p><strong>Supply  Chain Architecture</strong> The Indian automotive  supplier base is currently not too diversified for majority of components. This  was to drive volume-based price efficiencies. However, this strategy is highly  exposed to risks arising from disruptions in geographies that supply key auto  components. Hence, organisations are currently evaluating the supply chain  architecture and its vulnerabilities against external factors.</p>
+        </div>
+
+        <div id="contant_dv7" style="display: none">
+            <div class="section-title">
+                <h3 class="text-center">Future of MotorTek</h3>
+                <div class="title-line-center"></div>
+            </div>
+            <p>With  the landscape of the automobile industry changing drastically, MotorTek must  transform itself to sustain and grow in this dynamic and competitive market.  Here are some initiatives the organisation is working on.</p>
+            <p><strong>Premiumization</strong> The focus is shifting towards creating premium  bikes to improve margins across both domestic and global markets. With the  launch of the two premium bikes the organisation has earned some reasonable  dividends. Today, two-wheelers are becoming an aspirational object and there  are two-wheelers more expensive than some luxury vehicles in the market today.  The company wants to capitalize on the trend.</p>
+            <p><strong>Electric Vehicles:</strong> The India E-Bike market was valued at USD 1.02  million in 2020, and it is expected to reach&nbsp;USD 2.08 million by 2026,  projecting CAGR of 12.69 % during the forecast period. (2021-2026). The company  has launched a product last year to foray into this segment and continues to  invest a lot in Research and Development to improvise its products in this  domain.</p>
+            <p><strong>Connected 2 wheelers:</strong> As the automotive industry veers towards  digitization, coupled with smart phone connectivity, it  has contributed to several use cases for  connected two wheelers that include road and vehicle monitoring, driver  behaviour analysis, SOS calls, smart helmets, theft protection, vehicles  prognostics and health management.  Since  all these features are aligned to the safety and convenience of the two-wheeler  owners, the company cannot ignore them.</p>
+            <p><strong>Market Expansion:</strong> The organisation is  one of the top three automotive manufactures in India and has a relative strong  footage in international business, especially in Asian markets, capitalizing on  the expertise developed in the areas of manufacturing, technology and marketing  for better margins is crucial.</p>
+        </div>
+
+        <asp:HiddenField ID="hdnMenuId" runat="server" />
+        <asp:HiddenField ID="hdnAssmntType" runat="server" />
+        <asp:HiddenField ID="hdnFlagPageToOpen" runat="server" />
+        <asp:HiddenField ID="hdnLngID" runat="server" />
+    </form>
+</body>
+</html>

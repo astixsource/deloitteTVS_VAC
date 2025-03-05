@@ -1,0 +1,2171 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>LogMeIn.GoToMeeting.NET</name>
+    </assembly>
+    <members>
+        <member name="T:LogMeIn.GoToMeeting.Api.GroupsApi">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:LogMeIn.GoToMeeting.Api.GroupsApi.#ctor">
+            <summary>
+            Initializes a new instance of the GroupsApi class using the
+            default endpoint base url for the services being accessed.
+            </summary>
+        </member>
+        <member name="M:LogMeIn.GoToMeeting.Api.GroupsApi.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the GroupsApi class using an endpoint base
+            url other than the default. Use this constructor only if you should need
+            to override the default endpoint base url.
+            </summary>
+            <param name="basePath">The endpoint base url for the services being accessed.</param>
+        </member>
+        <member name="M:LogMeIn.GoToMeeting.Api.GroupsApi.createOrganizer(System.String,System.Nullable{System.Int64},LogMeIn.GoToMeeting.Api.Model.OrganizerReq)">
+            <summary>
+            Create organizer in group
+            Creates a new organizer and sends an email to the email address defined in request. This API call is only available to users with the admin role. You may also pass 'G2W' or 'G2T' or 'OPENVOICE' as productType variables, creating organizers for those products. A G2W or G2T organizer will also have access to G2M.
+            </summary>
+            <param name="authorization">Access token</param>
+            <param name="groupKey">The key of the group</param>
+            <param name="body">The details of the organizer to be created</param>
+            <returns>List&lt;OrganizerShort&gt;</returns>
+            <exception cref="T:LogMeIn.GoToMeeting.Api.Common.ApiException"></exception>
+        </member>
+        <member name="M:LogMeIn.GoToMeeting.Api.GroupsApi.getAttendeesByGroup(System.String,System.Nullable{System.Int64},System.Nullable{System.DateTime},System.Nullable{System.DateTime})">
+            <summary>
+            Get attendees by group
+            Returns all attendees for all meetings within specified date range held by organizers within the specified group. This API call is only available to users with the admin role. This API call can be used only for groups with maximum 50 organizers.
+            </summary>
+            <param name="authorization">Access token</param>
+            <param name="groupKey">The key of the group</param>
+            <param name="startDate">Start of date range, in ISO8601 UTC format, e.g. 2015-07-01T22:00:00Z</param>
+            <param name="endDate">End of date range, in ISO8601 UTC format, e.g. 2015-07-01T23:00:00Z</param>
+            <returns>List&lt;AttendeeByGroup&gt;</returns>
+            <exception cref="T:LogMeIn.GoToMeeting.Api.Common.ApiException"></exception>
+        </member>
+        <member name="M:LogMeIn.GoToMeeting.Api.GroupsApi.getGroups(System.String)">
+            <summary>
+            Get groups
+            List all groups for an account. This API call is only available to users with the admin role.
+            </summary>
+            <param name="authorization">Access token</param>
+            <returns>List&lt;Group&gt;</returns>
+            <exception cref="T:LogMeIn.GoToMeeting.Api.Common.ApiException"></exception>
+        </member>
+        <member name="M:LogMeIn.GoToMeeting.Api.GroupsApi.getHistoricalMeetingsByGroup(System.String,System.Nullable{System.Int64},System.Nullable{System.DateTime},System.Nullable{System.DateTime})">
+            <summary>
+            Get historical meetings by group
+            Get historical meetings for the specified group that started within the specified date/time range. This API call is only available to users with the admin role. This API call is restricted to groups with a maximum of 50 organizers. Remark: Meetings which are still ongoing at the time of the request are NOT contained in the result array.
+            </summary>
+            <param name="authorization">Access token</param>
+            <param name="groupKey">The key of the group</param>
+            <param name="startDate">Required start of date range, in ISO8601 UTC format, e.g. 2015-07-01T22:00:00Z</param>
+            <param name="endDate">Required end of date range, in ISO8601 UTC format, e.g. 2015-07-01T23:00:00Z</param>
+            <returns>List&lt;HistoricalMeetingByGroup&gt;</returns>
+            <exception cref="T:LogMeIn.GoToMeeting.Api.Common.ApiException"></exception>
+        </member>
+        <member name="M:LogMeIn.GoToMeeting.Api.GroupsApi.getHistoryMeetingsByGroup(System.String,System.Nullable{System.Int64},System.Nullable{System.Boolean},System.Nullable{System.DateTime},System.Nullable{System.DateTime})">
+            <summary>
+            DEPRECATED: Get historical meetings by group
+            DEPRECATED: Please use the new API calls 'Get historical meetings by group' and 'Get upcoming meetings by group'. Get meetings for a specified group. Additional filters can be used to view only meetings within a specified date range. This API call is only available to users with the admin role.
+            </summary>
+            <param name="authorization">Access token</param>
+            <param name="groupKey">The key of the group</param>
+            <param name="history">When 'true', returns all past meetings within date range</param>
+            <param name="startDate">If history=true, required start of date range, in ISO8601 UTC format, e.g. 2015-07-01T22:00:00Z</param>
+            <param name="endDate">If history=true, required end of date range, in ISO8601 UTC format, e.g. 2015-07-01T23:00:00Z</param>
+            <returns>List&lt;HistoryMeetingByGroup&gt;</returns>
+            <exception cref="T:LogMeIn.GoToMeeting.Api.Common.ApiException"></exception>
+        </member>
+        <member name="M:LogMeIn.GoToMeeting.Api.GroupsApi.getOrganizersByGroup(System.String,System.Nullable{System.Int64})">
+            <summary>
+            Get organizers by group
+            Returns all the organizers within a specific group. This API call is only available to users with the admin role.
+            </summary>
+            <param name="authorization">Access token</param>
+            <param name="groupKey">The key of the group</param>
+            <returns>List&lt;OrganizerByGroup&gt;</returns>
+            <exception cref="T:LogMeIn.GoToMeeting.Api.Common.ApiException"></exception>
+        </member>
+        <member name="M:LogMeIn.GoToMeeting.Api.GroupsApi.getUpcomingMeetingsByGroup(System.String,System.Nullable{System.Int64})">
+            <summary>
+            Get upcoming meetings by group
+            Get upcoming meetings for a specified group. This API call is only available to users with the admin role. This API call can be used only for groups with maximum 50 organizers.
+            </summary>
+            <param name="authorization">Access token</param>
+            <param name="groupKey">The key of the group</param>
+            <returns>List&lt;UpcomingMeetingByGroup&gt;</returns>
+            <exception cref="T:LogMeIn.GoToMeeting.Api.Common.ApiException"></exception>
+        </member>
+        <member name="M:LogMeIn.GoToMeeting.Api.GroupsApi.getScheduledMeetingsByGroup(System.String,System.Nullable{System.Int64},System.Nullable{System.Boolean},System.Nullable{System.DateTime},System.Nullable{System.DateTime})">
+            <summary>
+            Get scheduled meetings by group
+            Get scheduled meetings for a group. This API is only available to corporate users with the admin role.
+            </summary>
+            <param name="authorization">Access token</param>
+            <param name="groupKey">The key of the group</param>
+            <param name="scheduled">When 'true' returns all future meetings</param>
+            <param name="startDate">If history=true, required start of date range, in ISO8601 UTC format</param>
+            <param name="endDate">If history=true, required end of date range, in ISO8601 UTC format</param>
+            <returns>List&lt;ScheduledMeetingByGroup&gt; </returns>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.GroupsApi.Invoker">
+            <summary>
+            Gets the API invoker
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.GroupsApi.BasePath">
+            <summary>
+            Gets the endpoint base url for the services being accessed
+            </summary>
+        </member>
+        <member name="T:LogMeIn.GoToMeeting.Api.MeetingsApi">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:LogMeIn.GoToMeeting.Api.MeetingsApi.#ctor">
+            <summary>
+            Initializes a new instance of the MeetingsApi class using the
+            default endpoint base url for the services being accessed.
+            </summary>
+        </member>
+        <member name="M:LogMeIn.GoToMeeting.Api.MeetingsApi.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the MeetingsApi class using an endpoint base
+            url other than the default. Use this constructor only if you should need
+            to override the default endpoint base url.
+            </summary>
+            <param name="basePath">The endpoint base url for the services being accessed.</param>
+        </member>
+        <member name="M:LogMeIn.GoToMeeting.Api.MeetingsApi.createMeeting(System.String,LogMeIn.GoToMeeting.Api.Model.MeetingReqCreate)">
+            <summary>
+            Create meeting
+            Create a new meeting based on the parameters specified.
+            </summary>
+            <param name="authorization">Access token</param>
+            <param name="body">The meeting details</param>
+            <returns>List&lt;MeetingCreated&gt;</returns>
+            <exception cref="T:LogMeIn.GoToMeeting.Api.Common.ApiException"></exception>
+        </member>
+        <member name="M:LogMeIn.GoToMeeting.Api.MeetingsApi.deleteMeeting(System.String,System.Nullable{System.Int64})">
+            <summary>
+            Delete meeting
+            Deletes the meeting identified by the meetingId.
+            </summary>
+            <param name="authorization">Access token</param>
+            <param name="meetingId">The meeting ID</param>
+            <returns>void</returns>
+            <exception cref="T:LogMeIn.GoToMeeting.Api.Common.ApiException"></exception>
+        </member>
+        <member name="M:LogMeIn.GoToMeeting.Api.MeetingsApi.getAttendeesByMeetings(System.String,System.Nullable{System.Int64})">
+            <summary>
+            Get attendees by meeting
+            List all attendees for specified meetingId of historical meeting. The historical meetings can be fetched using 'Get historical meetings', 'Get historical meetings by organizer', and 'Get historical meetings by group'. For users with the admin role this call returns attendees for any meeting. For any other user the call will return attendees for meetings on which the user is a valid organizer.
+            </summary>
+            <param name="authorization">Access token</param>
+            <param name="meetingId">The meeting ID</param>
+            <returns>List&lt;AttendeeByMeeting&gt;</returns>
+            <exception cref="T:LogMeIn.GoToMeeting.Api.Common.ApiException"></exception>
+        </member>
+        <member name="M:LogMeIn.GoToMeeting.Api.MeetingsApi.getHistoricalMeetings(System.String,System.Nullable{System.DateTime},System.Nullable{System.DateTime})">
+            <summary>
+            Get historical meetings
+            Get historical meetings for the currently authenticated organizer that started within the specified date/time range. Remark: Meetings which are still ongoing at the time of the request are NOT contained in the result array.
+            </summary>
+            <param name="authorization">Access token</param>
+            <param name="startDate">Required start of date range, in ISO8601 UTC format, e.g. 2015-07-01T22:00:00Z</param>
+            <param name="endDate">Required end of date range, in ISO8601 UTC format, e.g. 2015-07-01T23:00:00Z</param>
+            <returns>List&lt;HistoricalMeeting&gt;</returns>
+            <exception cref="T:LogMeIn.GoToMeeting.Api.Common.ApiException"></exception>
+        </member>
+        <member name="M:LogMeIn.GoToMeeting.Api.MeetingsApi.getHistoryMeetings(System.String,System.Nullable{System.Boolean},System.Nullable{System.DateTime},System.Nullable{System.DateTime})">
+            <summary>
+            DEPRECATED: Get historical meetings
+            DEPRECATED: Please use the new API calls 'Get historical meetings' and 'Get upcoming meetings'.  Gets historical meetings for the current authenticated organizer. Requires date range for filtering results to only meetings within specified dates. History searches will contain the parameter 'meetingInstanceKey' which is used in conjunction with the call 'Get Attendees by Meeting' to get attendee information for a past meeting.
+            </summary>
+            <param name="authorization">Access token</param>
+            <param name="history">When 'true', returns all past meetings within date range</param>
+            <param name="startDate">If history=true, required start of date range, in ISO8601 UTC format, e.g. 2015-07-01T22:00:00Z</param>
+            <param name="endDate">If history=true, required end of date range, in ISO8601 UTC format, e.g. 2015-07-01T23:00:00Z</param>
+            <returns>List&lt;MeetingHistory&gt;</returns>
+            <exception cref="T:LogMeIn.GoToMeeting.Api.Common.ApiException"></exception>
+        </member>
+        <member name="M:LogMeIn.GoToMeeting.Api.MeetingsApi.getMeeting(System.String,System.Nullable{System.Int64})">
+            <summary>
+            Get meeting
+            Returns the meeting details for the specified meeting.
+            </summary>
+            <param name="authorization">Access token</param>
+            <param name="meetingId">The meeting ID</param>
+            <returns>List&lt;MeetingById&gt;</returns>
+            <exception cref="T:LogMeIn.GoToMeeting.Api.Common.ApiException"></exception>
+        </member>
+        <member name="M:LogMeIn.GoToMeeting.Api.MeetingsApi.getUpcomingMeetings(System.String)">
+            <summary>
+            Get upcoming meetings
+            Gets upcoming meetings for the current authenticated organizer.
+            </summary>
+            <param name="authorization">Access token</param>
+            <returns>List&lt;UpcomingMeeting&gt;</returns>
+            <exception cref="T:LogMeIn.GoToMeeting.Api.Common.ApiException"></exception>
+        </member>
+        <member name="M:LogMeIn.GoToMeeting.Api.MeetingsApi.startMeeting(System.String,System.Nullable{System.Int64})">
+            <summary>
+            Start meeting
+            Returns a host URL that can be used to start a meeting. When this URL is opened in a web browser, the GoToMeeting client will be downloaded and launched and the meeting will start. The end user is not required to login to a client.
+            </summary>
+            <param name="authorization">Access token</param>
+            <param name="meetingId">The meeting ID</param>
+            <returns>StartUrl</returns>
+            <exception cref="T:LogMeIn.GoToMeeting.Api.Common.ApiException"></exception>
+        </member>
+        <member name="M:LogMeIn.GoToMeeting.Api.MeetingsApi.updateMeeting(System.String,System.Nullable{System.Int64},LogMeIn.GoToMeeting.Api.Model.MeetingReqUpdate)">
+            <summary>
+            Update meeting
+            Updates an existing meeting specified by meetingId.
+            </summary>
+            <param name="authorization">Access token</param>
+            <param name="meetingId">The meeting ID</param>
+            <param name="body">The meeting details</param>
+            <returns>void</returns>
+            <exception cref="T:LogMeIn.GoToMeeting.Api.Common.ApiException"></exception>
+        </member>
+        <member name="M:LogMeIn.GoToMeeting.Api.MeetingsApi.getScheduledMeetings(System.String,System.Nullable{System.Boolean})">
+            <summary>
+            Get scheduled meetings
+            Gets scheduled meetings (meetings that have not occurred) for a specified organizer.
+            </summary>
+            <param name="authorization">Access token</param>
+            <param name="scheduled">When 'true' returns all future meetings</param>
+            <returns>List&lt;MeetingScheduled&gt; </returns>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.MeetingsApi.Invoker">
+            <summary>
+            Gets the API invoker
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.MeetingsApi.BasePath">
+            <summary>
+            Gets the endpoint base url for the services being accessed
+            </summary>
+        </member>
+        <member name="T:LogMeIn.GoToMeeting.Api.OrganizersApi">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:LogMeIn.GoToMeeting.Api.OrganizersApi.#ctor">
+            <summary>
+            Initializes a new instance of the OrganizersApi class using the
+            default endpoint base url for the services being accessed.
+            </summary>
+        </member>
+        <member name="M:LogMeIn.GoToMeeting.Api.OrganizersApi.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the OrganizersApi class using an endpoint base
+            url other than the default. Use this constructor only if you should need
+            to override the default endpoint base url.
+            </summary>
+            <param name="basePath">The endpoint base url for the services being accessed.</param>
+        </member>
+        <member name="M:LogMeIn.GoToMeeting.Api.OrganizersApi.createOrganizer(System.String,LogMeIn.GoToMeeting.Api.Model.OrganizerReq)">
+            <summary>
+            Create organizer
+            Creates a new organizer and sends an email to the email address defined in the request. This API call is only available to users with the admin role. You may also pass 'G2W' or 'G2T' or 'OPENVOICE' as productType variables, creating organizers for those products. A G2W or G2T organizer will also have access to G2M.
+            </summary>
+            <param name="authorization">Access token</param>
+            <param name="body">The details of the organizer to be created</param>
+            <returns>List&lt;OrganizerShort&gt;</returns>
+            <exception cref="T:LogMeIn.GoToMeeting.Api.Common.ApiException"></exception>
+        </member>
+        <member name="M:LogMeIn.GoToMeeting.Api.OrganizersApi.deleteOrganizer(System.String,System.Nullable{System.Int64})">
+            <summary>
+            Delete organizer
+            Deletes the individual organizer specified by the organizer key. This API call is only available to users with the admin role.
+            </summary>
+            <param name="authorization">Access token</param>
+            <param name="organizerKey">The key of the organizer</param>
+            <returns>void</returns>
+            <exception cref="T:LogMeIn.GoToMeeting.Api.Common.ApiException"></exception>
+        </member>
+        <member name="M:LogMeIn.GoToMeeting.Api.OrganizersApi.deleteOrganizerByEmail(System.String,System.String)">
+            <summary>
+            Delete organizer by email
+            Deletes the individual organizer specified by the email address. This API call is only available to users with the admin role.
+            </summary>
+            <param name="authorization">Access token</param>
+            <param name="email">The email address of the organizer</param>
+            <returns>void</returns>
+            <exception cref="T:LogMeIn.GoToMeeting.Api.Common.ApiException"></exception>
+        </member>
+        <member name="M:LogMeIn.GoToMeeting.Api.OrganizersApi.deleteSessionAttendeesById(System.String,System.Nullable{System.Int64},System.Nullable{System.Int64})">
+            <summary>
+            Remove attendee list of a meeting session
+            Use this call to clean up your data by deleting the attendee list for a specific session. The sessionID(s) and the number of attendees at each session is included by meeting in the Get Historical Meetings call. Each meeting held is at least one session. One meeting may be multiple sessions if the organizer stopped and restarted the meeting for any reason, such as their device of choice did not work. Recurring meetings are at least one session per event. The call removes the attendee list from the session from LogMeIn's servers. You can remove the entire session data using the Delete Session call, or delete recordings of the meeting using the Delete Session Recordings call. The meeting will still appear in your organizer's Meeting History, but will have no associated attendees. NOTE: The delete occurs at the session level because this provides the greatest granular control. To delete for a specific meetingID, you would need to accumualate all sessions for the meeting and apply the delete.
+            </summary>
+            <param name="authorization">Access token</param>
+            <param name="organizerKey">The organizer ID</param>
+            <param name="sessionId">The session ID</param>
+            <returns>void</returns>
+            <exception cref="T:LogMeIn.GoToMeeting.Api.Common.ApiException"></exception>
+        </member>
+        <member name="M:LogMeIn.GoToMeeting.Api.OrganizersApi.deleteSessionById(System.String,System.Nullable{System.Int64},System.Nullable{System.Int64})">
+            <summary>
+            Delete meeting session by session id
+            Use this call to clean up your data by deleting any specific session. The sessionID(s) are included by meeting in the Get Historical Meetings call. Each meeting held is at least one session. One meeting may be multiple sessions if the organizer stopped and restarted the meeting for any reason, such as their device of choice did not work. Recurring meetings are at least one session per event. The call removes the specified session(s) from LogMeIn's servers including the sessionID, the attendee list, and any recordings. The meeting will still appear in your organizer's Meeting History, but will have no associated sessions. NOTE: The delete occurs at the session level because this provides the greatest granular control. To delete for a specific meetingID, you would need to accumualate all sessions for the meeting and apply the delete.
+            </summary>
+            <param name="authorization">Access token</param>
+            <param name="organizerKey">The organizer ID</param>
+            <param name="sessionId">The session ID</param>
+            <returns>void</returns>
+            <exception cref="T:LogMeIn.GoToMeeting.Api.Common.ApiException"></exception>
+        </member>
+        <member name="M:LogMeIn.GoToMeeting.Api.OrganizersApi.deleteSessionRecordingsById(System.String,System.Nullable{System.Int64},System.Nullable{System.Int64})">
+            <summary>
+            Delete recordings of a meeting session
+            Use this call to clean up your data by deleting recordings associated with a specific session. The sessionID(s) are included by meeting in the Get Historical Meetings call. The call removes any recordings associated with the specified session from LogMeIn's servers. (Any session may have multiple recordings if the feature was started and stopped multiple times during the meeting.) You can remove the entire session data using the Delete Session call, or delete attendee lists for the session using the Delete Session Attendees call. The meeting will still appear in your organizer's Meeting History, but will have no associated recordings for the specified session. NOTE: The delete occurs at the session level because this provides the greatest granular control. To delete for a specific meetingID, you would need to accumualate all sessions for the meeting and apply the delete.
+            </summary>
+            <param name="authorization">Access token</param>
+            <param name="organizerKey">The organizer ID</param>
+            <param name="sessionId">The session ID</param>
+            <returns>void</returns>
+            <exception cref="T:LogMeIn.GoToMeeting.Api.Common.ApiException"></exception>
+        </member>
+        <member name="M:LogMeIn.GoToMeeting.Api.OrganizersApi.getAttendeesByOrganizer(System.String,System.Nullable{System.Int64},System.Nullable{System.DateTime},System.Nullable{System.DateTime})">
+            <summary>
+            Get attendees by organizer
+            Lists all attendees for all meetings within a specified date range for a specified organizer. This API call is only available to users with the admin role.
+            </summary>
+            <param name="authorization">Access token</param>
+            <param name="organizerKey">The key of the organizer</param>
+            <param name="startDate">A required start of date range in ISO8601 UTC format, e.g. 2015-07-01T22:00:00Z</param>
+            <param name="endDate">A required end of date range in ISO8601 UTC format, e.g. 2015-07-01T23:00:00Z</param>
+            <returns>List&lt;AttendeeByOrganizer&gt;</returns>
+            <exception cref="T:LogMeIn.GoToMeeting.Api.Common.ApiException"></exception>
+        </member>
+        <member name="M:LogMeIn.GoToMeeting.Api.OrganizersApi.getHistoricalMeetingsByOrganizer(System.String,System.Nullable{System.Int64},System.Nullable{System.DateTime},System.Nullable{System.DateTime})">
+            <summary>
+            Get historical meetings by organizer
+            Get historical meetings for the specified organizer that started within the specified date/time range. Remark: Meetings which are still ongoing at the time of the request are NOT contained in the result array.
+            </summary>
+            <param name="authorization">Access token</param>
+            <param name="organizerKey">The key of the organizer</param>
+            <param name="startDate">Required start of date range, in ISO8601 UTC format, e.g. 2015-07-01T22:00:00Z</param>
+            <param name="endDate">Required end of date range, in ISO8601 UTC format, e.g. 2015-07-01T23:00:00Z</param>
+            <returns>List&lt;HistoricalMeeting&gt;</returns>
+            <exception cref="T:LogMeIn.GoToMeeting.Api.Common.ApiException"></exception>
+        </member>
+        <member name="M:LogMeIn.GoToMeeting.Api.OrganizersApi.getMeetingsByOrganizer(System.String,System.Nullable{System.Int64},System.Nullable{System.Boolean},System.Nullable{System.Boolean},System.Nullable{System.DateTime},System.Nullable{System.DateTime})">
+            <summary>
+            DEPRECATED: Get meetings by organizer
+            DEPRECATED: Please use the new API calls 'Get historical meetings by organizer' and 'Get upcoming meetings by organizer'. Gets future (scheduled) or past (history) meetings for a specified organizer. Include 'history=true' and the past start and end dates in the URL to retrieve past meetings. Enter 'scheduled=true' (without dates) to get scheduled meetings.
+            </summary>
+            <param name="authorization">Access token</param>
+            <param name="organizerKey">The key of the organizer</param>
+            <param name="scheduled">When 'true', returns all future meetings. Date range not supported.</param>
+            <param name="history">When 'true', returns all past meetings within date range</param>
+            <param name="startDate">If history is 'true', required start of date range, in ISO8601 UTC format, e.g. 2015-07-01T22:00:00Z</param>
+            <param name="endDate">If history is 'true', required end of date range, in ISO8601 UTC format, e.g. 2015-07-01T23:00:00Z</param>
+            <returns>List&lt;MeetingByOrganizer&gt;</returns>
+            <exception cref="T:LogMeIn.GoToMeeting.Api.Common.ApiException"></exception>
+        </member>
+        <member name="M:LogMeIn.GoToMeeting.Api.OrganizersApi.getOrganizer(System.String,System.Nullable{System.Int64})">
+            <summary>
+            Get organizer
+            Returns the individual organizer specified by the key. This API call is only available to users with the admin role. Non-admin users can only make this call for their own organizerKey.
+            </summary>
+            <param name="authorization">Access token</param>
+            <param name="organizerKey">The key of the organizer</param>
+            <returns>List&lt;Organizer&gt;</returns>
+            <exception cref="T:LogMeIn.GoToMeeting.Api.Common.ApiException"></exception>
+        </member>
+        <member name="M:LogMeIn.GoToMeeting.Api.OrganizersApi.getOrganizersAllOrByEmail(System.String,System.String)">
+            <summary>
+            Get organizer by email / Get all organizers
+            Gets the individual organizer specified by the organizer's email address. If an email address is not specified, all organizers are returned. This API call is only available to users with the admin role.
+            </summary>
+            <param name="authorization">Access token</param>
+            <param name="email">The email address of the organizer</param>
+            <returns>List&lt;Organizer&gt;</returns>
+            <exception cref="T:LogMeIn.GoToMeeting.Api.Common.ApiException"></exception>
+        </member>
+        <member name="M:LogMeIn.GoToMeeting.Api.OrganizersApi.getUpcomingMeetingsByOrganizer(System.String,System.Nullable{System.Int64})">
+            <summary>
+            Get upcoming meetings by organizer
+            Get upcoming meetings for a specified organizer. This API call is only available to users with the admin role.
+            </summary>
+            <param name="authorization">Access token</param>
+            <param name="organizerKey">The key of the organizer</param>
+            <returns>List&lt;UpcomingMeeting&gt;</returns>
+            <exception cref="T:LogMeIn.GoToMeeting.Api.Common.ApiException"></exception>
+        </member>
+        <member name="M:LogMeIn.GoToMeeting.Api.OrganizersApi.updateOrganizer(System.String,System.Nullable{System.Int64},LogMeIn.GoToMeeting.Api.Model.OrganizerStatus)">
+            <summary>
+            Update organizer
+            Updates the products of the specified organizer. To add a product (G2M, G2W, G2T, OPENVOICE) for the organizer, the call must be sent once for each product you want to add. To remove all products for the organizer, set status to 'suspended'. The call is limited to users with the admin role.
+            </summary>
+            <param name="authorization">Access token</param>
+            <param name="organizerKey">The key of the organizer</param>
+            <param name="body">The organizer's status</param>
+            <returns>void</returns>
+            <exception cref="T:LogMeIn.GoToMeeting.Api.Common.ApiException"></exception>
+        </member>
+        <member name="M:LogMeIn.GoToMeeting.Api.OrganizersApi.getOrganizerByEmail(System.String,System.String)">
+            <summary>
+            Get organizer by email
+            Gets the individual organizer specified by the organizer's email address. This API call is only available to users with the admin role.
+            </summary>
+            <param name="authorization">Access token</param>
+            <param name="email">The email address of the organizer</param>
+            <returns>List&lt;Organizer&gt; </returns>
+            <exception cref="T:LogMeIn.GoToMeeting.Api.Common.ApiException"></exception>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.OrganizersApi.Invoker">
+            <summary>
+            Gets the API invoker
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.OrganizersApi.BasePath">
+            <summary>
+            Gets the endpoint base url for the services being accessed
+            </summary>
+        </member>
+        <member name="T:LogMeIn.GoToMeeting.Api.Common.ApiException">
+            <summary>
+            The exception thrown when an API error occurs.
+            </summary>
+        </member>
+        <member name="M:LogMeIn.GoToMeeting.Api.Common.ApiException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the ApiException class.
+            </summary>
+            <param name="message">A string describing the error.</param>
+        </member>
+        <member name="M:LogMeIn.GoToMeeting.Api.Common.ApiException.#ctor(System.Int32,System.String)">
+            <summary>
+            Initializes a new instance of the ApiException class.
+            </summary>
+            <param name="errorCode">The status code of the error that occured.
+            Can be HTML status code or another number for other types of exceptions.</param>
+            <param name="message">A string describing the error.</param>
+        </member>
+        <member name="M:LogMeIn.GoToMeeting.Api.Common.ApiException.#ctor(System.Int32,System.Exception)">
+            <summary>
+            Initializes a new instance of the ApiException class.
+            </summary>
+            <param name="errorCode">The status code of the error that occured.
+            Can be HTML status code or another number for other types of exceptions.</param>
+            <param name="e">The inner exception</param>
+        </member>
+        <member name="M:LogMeIn.GoToMeeting.Api.Common.ApiException.#ctor(System.Exception)">
+            <summary>
+            Initializes a new instance of the ApiException class.
+            </summary>
+            <param name="e">The inner exception</param>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Common.ApiException.ErrorCode">
+            <summary>
+            Gets the status code of the error that occurred.
+            Can be HTML status code or another number for other types of exceptions.
+            </summary>
+        </member>
+        <member name="T:LogMeIn.GoToMeeting.Api.Common.ApiInvoker">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:LogMeIn.GoToMeeting.Api.Common.ApiInvoker.GetInstance">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:LogMeIn.GoToMeeting.Api.Common.ApiInvoker.AddDefaultHeader(System.String,System.String)">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:LogMeIn.GoToMeeting.Api.Common.ApiInvoker.EscapeString(System.String)">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:LogMeIn.GoToMeeting.Api.Common.ApiInvoker.Deserialize(System.String,System.Type)">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:LogMeIn.GoToMeeting.Api.Common.ApiInvoker.Serialize(System.Object)">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:LogMeIn.GoToMeeting.Api.Common.ApiInvoker.InvokeAPI(System.String,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.String},System.Object,System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.Dictionary{System.String,System.Object},System.Type,System.String)">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="T:LogMeIn.GoToMeeting.Api.Model.AttendeeByGroup">
+            <summary>
+            Describes an attendee of a meeting instance held by an organizer within a specified group.
+            </summary>
+        </member>
+        <member name="M:LogMeIn.GoToMeeting.Api.Model.AttendeeByGroup.ToString">
+            <summary>
+            Returns a string representing the current object.
+            </summary>
+            <returns>The Json serialization of the current object.</returns>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.AttendeeByGroup.lastName">
+            <summary>
+            The surname of the meeting organizer
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.AttendeeByGroup.groupName">
+            <summary>
+            The name of the group
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.AttendeeByGroup.numAttendees">
+            <summary>
+            The number of attendees at the attended meeting instance
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.AttendeeByGroup.attendeeName">
+            <summary>
+            The full name of the attendee
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.AttendeeByGroup.subject">
+            <summary>
+            The subject of the attended meeting
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.AttendeeByGroup.endTime">
+            <summary>
+            The time the meeting instance ended
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.AttendeeByGroup.conferenceCallInfo">
+            <summary>
+            Audio options for the attended meeting
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.AttendeeByGroup.organizerkey">
+            <summary>
+            The key of the meeting organizer. Field retained for backwards compatibility reasons
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.AttendeeByGroup.startTime">
+            <summary>
+            The time the meeting instance started
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.AttendeeByGroup.meetingInstanceKey">
+            <summary>
+            The key of the attended meeting instance
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.AttendeeByGroup.duration">
+            <summary>
+            The duration of attendance in minutes
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.AttendeeByGroup.joinTime">
+            <summary>
+            The time the attendee joined the meeting instance
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.AttendeeByGroup.email">
+            <summary>
+            The email address of the meeting organizer
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.AttendeeByGroup.leaveTime">
+            <summary>
+            The time the attendee left the meeting instance
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.AttendeeByGroup.attendeeEmail">
+            <summary>
+            The attendee's email address
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.AttendeeByGroup.organizerKey">
+            <summary>
+            The key of the meeting organizer
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.AttendeeByGroup.meetingId">
+            <summary>
+            The meeting ID
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.AttendeeByGroup.meetingType">
+            <summary>
+            The meeting type
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.AttendeeByGroup.firstName">
+            <summary>
+            The first name of the organizer of the attended meeting
+            </summary>
+        </member>
+        <member name="T:LogMeIn.GoToMeeting.Api.Model.AttendeeByMeeting">
+            <summary>
+            Describes an attendee of a specified meeting instance.
+            </summary>
+        </member>
+        <member name="M:LogMeIn.GoToMeeting.Api.Model.AttendeeByMeeting.ToString">
+            <summary>
+            Returns a string representing the current object.
+            </summary>
+            <returns>The Json serialization of the current object.</returns>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.AttendeeByMeeting.lastName">
+            <summary>
+            The surname of the meeting organizer
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.AttendeeByMeeting.groupName">
+            <summary>
+            DEPRECATED. Returns 'NA'
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.AttendeeByMeeting.numAttendees">
+            <summary>
+            The number of attendees at the meeting instance
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.AttendeeByMeeting.attendeeName">
+            <summary>
+            The attendee's full name
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.AttendeeByMeeting.subject">
+            <summary>
+            The subject of the meeting
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.AttendeeByMeeting.endTime">
+            <summary>
+            The ending time of the meeting instance
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.AttendeeByMeeting.conferenceCallInfo">
+            <summary>
+            Audio options for the meeting
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.AttendeeByMeeting.organizerkey">
+            <summary>
+            The key of the meeting organizer
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.AttendeeByMeeting.startTime">
+            <summary>
+            The starting time of the meeting instance
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.AttendeeByMeeting.meetingInstanceKey">
+            <summary>
+            The key of the unique meeting instance
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.AttendeeByMeeting.duration">
+            <summary>
+            The meeting duration in minutes
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.AttendeeByMeeting.email">
+            <summary>
+            The email address of the meeting organizer
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.AttendeeByMeeting.joinTime">
+            <summary>
+            The time the attendee joined the meeting instance
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.AttendeeByMeeting.name">
+            <summary>
+            The attendee's full name
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.AttendeeByMeeting.leaveTime">
+            <summary>
+            The time the attendee left the meeting instance
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.AttendeeByMeeting.attendeeEmail">
+            <summary>
+            The attendee's email address
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.AttendeeByMeeting.meetingId">
+            <summary>
+            The meeting ID
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.AttendeeByMeeting.meetingType">
+            <summary>
+            The meeting type
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.AttendeeByMeeting.firstName">
+            <summary>
+            The first name of the meeting organizer
+            </summary>
+        </member>
+        <member name="T:LogMeIn.GoToMeeting.Api.Model.AttendeeByOrganizer">
+            <summary>
+            Describes an attendee of a meeting instance held by a specified organizer.
+            </summary>
+        </member>
+        <member name="M:LogMeIn.GoToMeeting.Api.Model.AttendeeByOrganizer.ToString">
+            <summary>
+            Returns a string representing the current object.
+            </summary>
+            <returns>The Json serialization of the current object.</returns>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.AttendeeByOrganizer.lastName">
+            <summary>
+            The surname of the meeting organizer
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.AttendeeByOrganizer.groupName">
+            <summary>
+            The name of the group the organizer is assigned to
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.AttendeeByOrganizer.numAttendees">
+            <summary>
+            The number of attendees at the attended meeting instance
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.AttendeeByOrganizer.attendeeName">
+            <summary>
+            The full name of the attendee
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.AttendeeByOrganizer.subject">
+            <summary>
+            The subject of the attended meeting
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.AttendeeByOrganizer.endTime">
+            <summary>
+            The time the meeting instance ended
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.AttendeeByOrganizer.conferenceCallInfo">
+            <summary>
+            Audio options for the attended meeting
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.AttendeeByOrganizer.organizerkey">
+            <summary>
+            The key of the meeting organizer. Field retained for backwards compatibility reasons
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.AttendeeByOrganizer.startTime">
+            <summary>
+            The time the meeting instance started
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.AttendeeByOrganizer.meetingInstanceKey">
+            <summary>
+            The key of the attended meeting instance
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.AttendeeByOrganizer.duration">
+            <summary>
+            The duration of attendance in minutes
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.AttendeeByOrganizer.newMeetingId">
+            <summary>
+            The formatted meeting ID
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.AttendeeByOrganizer.email">
+            <summary>
+            The email address of the meeting organizer
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.AttendeeByOrganizer.joinTime">
+            <summary>
+            The time the attendee joined the meeting instance
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.AttendeeByOrganizer.name">
+            <summary>
+            The full name of the meeting organizer
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.AttendeeByOrganizer.leaveTime">
+            <summary>
+            The time the attendee left the meeting instance
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.AttendeeByOrganizer.attendeeEmail">
+            <summary>
+            The attendee's email address
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.AttendeeByOrganizer.meetingId">
+            <summary>
+            The meeting ID
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.AttendeeByOrganizer.meetingType">
+            <summary>
+            The meeting type
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.AttendeeByOrganizer.firstName">
+            <summary>
+            The first name of the meeting organizer
+            </summary>
+        </member>
+        <member name="T:LogMeIn.GoToMeeting.Api.Model.Group">
+            <summary>
+            Describes a collection of organizers categorized by department or job function, for example. Can be a subgroup of a larger group.
+            </summary>
+        </member>
+        <member name="M:LogMeIn.GoToMeeting.Api.Model.Group.ToString">
+            <summary>
+            Returns a string representing the current object.
+            </summary>
+            <returns>The Json serialization of the current object.</returns>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.Group.groupkey">
+            <summary>
+            The key of this group
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.Group.groupName">
+            <summary>
+            The name of this group
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.Group.parentKey">
+            <summary>
+            The key of the parent group this group belongs to. Identical with the groupkey if this group is not a subgroup
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.Group.status">
+            <summary>
+            The status of this group, i.e. whether the organizers assigned to it are able to host meetings
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.Group.numOrganizers">
+            <summary>
+            The number of organizers assigned to this group
+            </summary>
+        </member>
+        <member name="T:LogMeIn.GoToMeeting.Api.Model.HistoricalMeeting">
+            <summary>
+            Describes a historical meeting within specified dates.
+            </summary>
+        </member>
+        <member name="M:LogMeIn.GoToMeeting.Api.Model.HistoricalMeeting.ToString">
+            <summary>
+            Returns a string representing the current object.
+            </summary>
+            <returns>The Json serialization of the current object.</returns>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.HistoricalMeeting.startTime">
+            <summary>
+            The time the meeting instance started
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.HistoricalMeeting.lastName">
+            <summary>
+            The surname of the meeting organizer
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.HistoricalMeeting.duration">
+            <summary>
+            The duration of the meeting session in minutes
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.HistoricalMeeting.numAttendees">
+            <summary>
+            The number of attendees at the meeting instance
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.HistoricalMeeting.accountKey">
+            <summary>
+            The key of the company account
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.HistoricalMeeting.email">
+            <summary>
+            The meeting organizer's email address
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.HistoricalMeeting.sessionId">
+            <summary>
+            The ID of the meeting session
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.HistoricalMeeting.subject">
+            <summary>
+            The subject of the meeting
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.HistoricalMeeting.locale">
+            <summary>
+            The current language setting of the organizer in the web portal
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.HistoricalMeeting.organizerKey">
+            <summary>
+            The key of the meeting organizer
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.HistoricalMeeting.meetingId">
+            <summary>
+            The meeting ID
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.HistoricalMeeting.meetingType">
+            <summary>
+            The meeting type
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.HistoricalMeeting.firstName">
+            <summary>
+            The meeting organizer's first name
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.HistoricalMeeting.endTime">
+            <summary>
+            The time the meeting instance ended
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.HistoricalMeeting.conferenceCallInfo">
+            <summary>
+            Audio options for the meeting
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.HistoricalMeeting.recording">
+            <summary>
+            Information about the meeting recording
+            </summary>
+        </member>
+        <member name="T:LogMeIn.GoToMeeting.Api.Model.HistoricalMeetingByGroup">
+            <summary>
+            Describes a historical meeting within specified dates for a specified group.
+            </summary>
+        </member>
+        <member name="M:LogMeIn.GoToMeeting.Api.Model.HistoricalMeetingByGroup.ToString">
+            <summary>
+            Returns a string representing the current object.
+            </summary>
+            <returns>The Json serialization of the current object.</returns>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.HistoricalMeetingByGroup.startTime">
+            <summary>
+            The time the meeting instance started
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.HistoricalMeetingByGroup.lastName">
+            <summary>
+            The surname of the meeting organizer
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.HistoricalMeetingByGroup.duration">
+            <summary>
+            The duration of the meeting session in minutes
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.HistoricalMeetingByGroup.numAttendees">
+            <summary>
+            The number of attendees at the meeting instance
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.HistoricalMeetingByGroup.accountKey">
+            <summary>
+            The key of the company account
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.HistoricalMeetingByGroup.email">
+            <summary>
+            The meeting organizer's email address
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.HistoricalMeetingByGroup.subject">
+            <summary>
+            The subject of the meeting
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.HistoricalMeetingByGroup.locale">
+            <summary>
+            The current language setting of the organizer in the web portal
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.HistoricalMeetingByGroup.organizerKey">
+            <summary>
+            The key of the meeting organizer
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.HistoricalMeetingByGroup.meetingId">
+            <summary>
+            The meeting ID
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.HistoricalMeetingByGroup.meetingType">
+            <summary>
+            The meeting type
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.HistoricalMeetingByGroup.firstName">
+            <summary>
+            The meeting organizer's first name
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.HistoricalMeetingByGroup.endTime">
+            <summary>
+            The time the meeting instance ended
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.HistoricalMeetingByGroup.groupName">
+            <summary>
+            The name of the group
+            </summary>
+        </member>
+        <member name="T:LogMeIn.GoToMeeting.Api.Model.HistoryMeetingByGroup">
+            <summary>
+            Describes past meeting instance(s) held by an organizer within a specified group.
+            </summary>
+        </member>
+        <member name="M:LogMeIn.GoToMeeting.Api.Model.HistoryMeetingByGroup.ToString">
+            <summary>
+            Returns a string representing the current object.
+            </summary>
+            <returns>The Json serialization of the current object.</returns>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.HistoryMeetingByGroup.lastName">
+            <summary>
+            The surname of the meeting organizer
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.HistoryMeetingByGroup.groupName">
+            <summary>
+            The name of the group
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.HistoryMeetingByGroup.numAttendees">
+            <summary>
+            The number of attendees at this meeting instance
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.HistoryMeetingByGroup.subject">
+            <summary>
+            The subject of the meeting
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.HistoryMeetingByGroup.endTime">
+            <summary>
+            The time this meeting instance ended
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.HistoryMeetingByGroup.conferenceCallInfo">
+            <summary>
+            Audio options for the meeting
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.HistoryMeetingByGroup.organizerkey">
+            <summary>
+            The key of the meeting organizer. Field retained for backwards compatibility reasons
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.HistoryMeetingByGroup.startTime">
+            <summary>
+            The time this meeting instance started
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.HistoryMeetingByGroup.meetingInstanceKey">
+            <summary>
+            The key of this meeting instance
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.HistoryMeetingByGroup.duration">
+            <summary>
+            The duration of this meeting instance in minutes
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.HistoryMeetingByGroup.email">
+            <summary>
+            The email address of the meeting organizer
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.HistoryMeetingByGroup.organizerKey">
+            <summary>
+            The key of the meeting organizer
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.HistoryMeetingByGroup.meetingId">
+            <summary>
+            The meeting ID
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.HistoryMeetingByGroup.meetingType">
+            <summary>
+            The meeting type
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.HistoryMeetingByGroup.firstName">
+            <summary>
+            The first name of the meeting organizer
+            </summary>
+        </member>
+        <member name="T:LogMeIn.GoToMeeting.Api.Model.MeetingById">
+            <summary>
+            Describes a given meeting.
+            </summary>
+        </member>
+        <member name="M:LogMeIn.GoToMeeting.Api.Model.MeetingById.ToString">
+            <summary>
+            Returns a string representing the current object.
+            </summary>
+            <returns>The Json serialization of the current object.</returns>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.MeetingById.createTime">
+            <summary>
+            DEPRECATED. Returns an empty string ''
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.MeetingById.passwordRequired">
+            <summary>
+            Indicates whether a password is required to join the meeting
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.MeetingById.status">
+            <summary>
+            The meeting status, i.e whether the meeting is running or not
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.MeetingById.subject">
+            <summary>
+            The subject of the meeting
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.MeetingById.endTime">
+            <summary>
+            The ending time of the meeting
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.MeetingById.conferenceCallInfo">
+            <summary>
+            Audio options of the meeting
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.MeetingById.startTime">
+            <summary>
+            The meeting starting time
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.MeetingById.duration">
+            <summary>
+            The duration of the meeting in minutes
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.MeetingById.maxParticipants">
+            <summary>
+            The maximum number of participants allowed at the meeting
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.MeetingById.meetingId">
+            <summary>
+            The meeting ID
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.MeetingById.meetingKey">
+            <summary>
+            The meeting ID. Field retained for backwards compatibility reasons
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.MeetingById.meetingType">
+            <summary>
+            The meeting type
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.MeetingById.uniqueMeetingId">
+            <summary>
+            The meeting ID. Field retained for backwards compatibility reasons
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.MeetingById.coorganizerKeys">
+            <summary>
+            The co-organizer keys of users that also can host the meeting.
+            </summary>
+        </member>
+        <member name="T:LogMeIn.GoToMeeting.Api.Model.MeetingByOrganizer">
+            <summary>
+            Describes a meeting scheduled by a specified organizer
+            </summary>
+        </member>
+        <member name="M:LogMeIn.GoToMeeting.Api.Model.MeetingByOrganizer.ToString">
+            <summary>
+            Returns a string representing the current object.
+            </summary>
+            <returns>The Json serialization of the current object.</returns>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.MeetingByOrganizer.startTime">
+            <summary>
+            The starting time of the meeting
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.MeetingByOrganizer.createTime">
+            <summary>
+            DEPRECATED. Returns an empty string ''
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.MeetingByOrganizer.meetingid">
+            <summary>
+            The meeting ID
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.MeetingByOrganizer.maxParticipants">
+            <summary>
+            The maximum number of participants allowed at the meeting
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.MeetingByOrganizer.passwordRequired">
+            <summary>
+            Indicates whether a password is required to join the meeting
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.MeetingByOrganizer.status">
+            <summary>
+            The meeting status, i.e whether the meeting is running or not
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.MeetingByOrganizer.subject">
+            <summary>
+            The subject of the meeting
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.MeetingByOrganizer.meetingType">
+            <summary>
+            The meeting type
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.MeetingByOrganizer.endTime">
+            <summary>
+            The ending time of the meeting
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.MeetingByOrganizer.uniqueMeetingId">
+            <summary>
+            A unique ID for the meeting
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.MeetingByOrganizer.conferenceCallInfo">
+            <summary>
+            Audio options for the meeting
+            </summary>
+        </member>
+        <member name="T:LogMeIn.GoToMeeting.Api.Model.MeetingCreated">
+            <summary>
+            Describes a newly created meeting.
+            </summary>
+        </member>
+        <member name="M:LogMeIn.GoToMeeting.Api.Model.MeetingCreated.ToString">
+            <summary>
+            Returns a string representing the current object.
+            </summary>
+            <returns>The Json serialization of the current object.</returns>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.MeetingCreated.joinURL">
+            <summary>
+            The URL the meeting participants will use to join the meeting
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.MeetingCreated.meetingid">
+            <summary>
+            The meeting ID
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.MeetingCreated.maxParticipants">
+            <summary>
+            The maximum number of participants allowed in the meeting
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.MeetingCreated.uniqueMeetingId">
+            <summary>
+            The meeting ID. Field retained for backwards compatibility reasons
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.MeetingCreated.conferenceCallInfo">
+            <summary>
+            Audio options for the meeting
+            </summary>
+        </member>
+        <member name="T:LogMeIn.GoToMeeting.Api.Model.MeetingHistory">
+            <summary>
+            Describes a unique past meeting instance.
+            </summary>
+        </member>
+        <member name="M:LogMeIn.GoToMeeting.Api.Model.MeetingHistory.ToString">
+            <summary>
+            Returns a string representing the current object.
+            </summary>
+            <returns>The Json serialization of the current object.</returns>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.MeetingHistory.lastName">
+            <summary>
+            The surname of the meeting organizer
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.MeetingHistory.groupName">
+            <summary>
+            DEPRECATED. An empty string '' is returned
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.MeetingHistory.numAttendees">
+            <summary>
+            The number of attendees at the meeting instance
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.MeetingHistory.passwordRequired">
+            <summary>
+            DEPRECATED. An empty string '' is returned
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.MeetingHistory.status">
+            <summary>
+            DEPRECATED. An empty string '' is returned
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.MeetingHistory.subject">
+            <summary>
+            The subject of the meeting
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.MeetingHistory.endTime">
+            <summary>
+            The time the meeting instance ended
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.MeetingHistory.date">
+            <summary>
+            The time the meeting instance started. Field retained for backwards compatibility reasons
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.MeetingHistory.conferenceCallInfo">
+            <summary>
+            Audio options for the meeting
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.MeetingHistory.startTime">
+            <summary>
+            The time the meeting instance started
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.MeetingHistory.organizerkey">
+            <summary>
+            The key of the meeting organizer. Field retained for backwards compatibility reasons
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.MeetingHistory.meetingInstanceKey">
+            <summary>
+            The key of the unique meeting instance
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.MeetingHistory.newOrganizerKey">
+            <summary>
+            The key of the meeting organizer. Field introduced for compatibility reasons
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.MeetingHistory.duration">
+            <summary>
+            The duration of the meeting session in minutes
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.MeetingHistory.newMeetingId">
+            <summary>
+            Formatted meeting ID
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.MeetingHistory.sessionId">
+            <summary>
+            The ID of the meeting session
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.MeetingHistory.email">
+            <summary>
+            The meeting organizer's email address
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.MeetingHistory.meetingId">
+            <summary>
+            The meeting ID
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.MeetingHistory.organizerKey">
+            <summary>
+            The key of the meeting organizer
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.MeetingHistory.meetingKey">
+            <summary>
+            The meeting ID. Field retained for backwards compatibility reasons
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.MeetingHistory.meetingType">
+            <summary>
+            The meeting type
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.MeetingHistory.firstName">
+            <summary>
+            The meeting organizer's first name
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.MeetingHistory.uniqueMeetingId">
+            <summary>
+            The meeting ID. Field retained for backwards compatibility reasons
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.MeetingHistory.recording">
+            <summary>
+            Information about the meeting recording
+            </summary>
+        </member>
+        <member name="T:LogMeIn.GoToMeeting.Api.Model.MeetingRecording">
+            <summary>
+            Information about the meeting recording.
+            </summary>
+        </member>
+        <member name="M:LogMeIn.GoToMeeting.Api.Model.MeetingRecording.ToString">
+            <summary>
+            Returns a string representing the current object.
+            </summary>
+            <returns>The Json serialization of the current object.</returns>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.MeetingRecording.recordingName">
+            <summary>
+            Name of the recording
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.MeetingRecording.downloadUrl">
+            <summary>
+            Url where the mp4 file of the recording can be downloaded
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.MeetingRecording.downloadUrlValidUntil">
+            <summary>
+            Time until when the recording is available for download
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.MeetingRecording.fileSize">
+            <summary>
+            Size of the recording file in bytes
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.MeetingRecording.shareUrl">
+            <summary>
+            Url that can be used to share the recording only or including transcripts if present
+            </summary>
+        </member>
+        <member name="T:LogMeIn.GoToMeeting.Api.Model.MeetingReqCreate">
+            <summary>
+            Describes the information required to create a meeting.
+            </summary>
+        </member>
+        <member name="M:LogMeIn.GoToMeeting.Api.Model.MeetingReqCreate.ToString">
+            <summary>
+            Returns a string representing the current object.
+            </summary>
+            <returns>The Json serialization of the current object.</returns>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.MeetingReqCreate.subject">
+            <summary>
+            The subject of the meeting. 100 characters maximum. The characters '&gt;' and '&lt;' have to be replaced with the corresponding html character code (&amp;gt; for &#39;&gt;&#39; and &amp;lt; for &#39;&lt;&#39;)
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.MeetingReqCreate.starttime">
+            <summary>
+            The starting time of the meeting. Required ISO8601 UTC string, e.g. 2015-07-01T22:00:00Z
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.MeetingReqCreate.endtime">
+            <summary>
+            The ending time of the meeting. Required ISO8601 UTC string, e.g. 2015-07-01T23:00:00Z
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.MeetingReqCreate.passwordrequired">
+            <summary>
+            Indicates whether a password is required to join the meeting. Required parameter
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.MeetingReqCreate.conferencecallinfo">
+            <summary>
+            A required string. Can be one of the following options: <para/>PSTN (PSTN only), <para/>Free (PSTN and VoIP), <para/>Hybrid, (PSTN and VoIP), <para/>Private (you provide numbers and access code), or <para/>VoIP (VoIP only). <para/>You may also enter plain text for numbers and access codes with a limit of 255 characters
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.MeetingReqCreate.timezonekey">
+            <summary>
+            DEPRECATED. Must be provided and set to empty string ''
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.MeetingReqCreate.meetingtype">
+            <summary>
+            The meeting type
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.MeetingReqCreate.coorganizerKeys">
+            <summary>
+            Co-organizer keys. Co-organizers can start the meeting on the organizers behalf. Retrieve a list of valid organizers from the \"Get all organizers\" call.
+            </summary>
+        </member>
+        <member name="T:LogMeIn.GoToMeeting.Api.Model.MeetingReqUpdate">
+            <summary>
+            Describes the information required to update a meeting.
+            </summary>
+        </member>
+        <member name="M:LogMeIn.GoToMeeting.Api.Model.MeetingReqUpdate.ToString">
+            <summary>
+            Returns a string representing the current object.
+            </summary>
+            <returns>The Json serialization of the current object.</returns>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.MeetingReqUpdate.subject">
+            <summary>
+            A description of the meeting. 100 characters maximum. The characters '&gt;' and '&lt;' have to be replaced with the corresponding html character code (&amp;gt; for &#39;&gt;&#39; and &amp;lt; for &#39;&lt;&#39;)
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.MeetingReqUpdate.starttime">
+            <summary>
+            The starting time of the meeting. A required ISO8601 UTC string, e.g. 2015-07-01T22:00:00Z
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.MeetingReqUpdate.endtime">
+            <summary>
+            The ending time of the meeting. A required ISO8601 UTC string, e.g. 2015-07-01T22:00:00Z
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.MeetingReqUpdate.passwordrequired">
+            <summary>
+            Indicates whether a password is required to join the meeting. Required parameter
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.MeetingReqUpdate.conferencecallinfo">
+            <summary>
+            A required string. Can be one of the following options: <para/>PSTN (PSTN only), <para/>Free (PSTN and VoIP), <para/>Hybrid, (PSTN and VoIP), <para/>Private (you provide numbers and access code), or <para/>VoIP (VoIP only). <para/>You may also enter plain text for numbers and access codes with a limit of 255 characters
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.MeetingReqUpdate.timezonekey">
+            <summary>
+            DEPRECATED. Must be provided and set to empty string ''
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.MeetingReqUpdate.meetingtype">
+            <summary>
+            The meeting type
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.MeetingReqUpdate.coorganizerKeys">
+            <summary>
+            Co-organizer keys. Co-organizers can start the meeting on the organizers behalf. Retrieve a list of valid organizers from the \"Get all organizers\" call.
+            </summary>
+        </member>
+        <member name="T:LogMeIn.GoToMeeting.Api.Model.MeetingScheduled">
+            <summary>
+            Describes a scheduled meeting.
+            </summary>
+        </member>
+        <member name="M:LogMeIn.GoToMeeting.Api.Model.MeetingScheduled.ToString">
+            <summary>
+            Returns a string representing the current object.
+            </summary>
+            <returns>The Json serialization of the current object.</returns>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.MeetingScheduled.startTime">
+            <summary>
+            The starting time of the meeting.
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.MeetingScheduled.createTime">
+            <summary>
+            The time the meeting was created.
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.MeetingScheduled.meetingid">
+            <summary>
+            The meeting ID.
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.MeetingScheduled.maxParticipants">
+            <summary>
+            The maximum number of participants allowed at the meeting.
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.MeetingScheduled.passwordRequired">
+            <summary>
+            Indicates whether a password is required to join the meeting.
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.MeetingScheduled.status">
+            <summary>
+            The meeting status, i.e whether the meeting is running or not
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.MeetingScheduled.subject">
+            <summary>
+            The subject of the meeting.
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.MeetingScheduled.meetingType">
+            <summary>
+            The meeting type
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.MeetingScheduled.endTime">
+            <summary>
+            The ending time of the meeting.
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.MeetingScheduled.uniqueMeetingId">
+            <summary>
+            The meeting ID. Field retained for backwards compatibility reasons.
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.MeetingScheduled.conferenceCallInfo">
+            <summary>
+            Audio options for the meeting.
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.MeetingScheduled.coorganizerKeys">
+            <summary>
+            Co-organizer keys. Co-organizers can start the meeting on the organizers behalf.
+            </summary>
+        </member>
+        <member name="T:LogMeIn.GoToMeeting.Api.Model.MeetingStatus">
+            <summary>
+            The meeting status, i.e whether the meeting is running or not
+            </summary>
+        </member>
+        <member name="F:LogMeIn.GoToMeeting.Api.Model.MeetingStatus.ACTIVE">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="F:LogMeIn.GoToMeeting.Api.Model.MeetingStatus.INACTIVE">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="T:LogMeIn.GoToMeeting.Api.Model.MeetingType">
+            <summary>
+            The meeting type
+            </summary>
+        </member>
+        <member name="F:LogMeIn.GoToMeeting.Api.Model.MeetingType.immediate">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="F:LogMeIn.GoToMeeting.Api.Model.MeetingType.recurring">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="F:LogMeIn.GoToMeeting.Api.Model.MeetingType.scheduled">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="T:LogMeIn.GoToMeeting.Api.Model.Organizer">
+            <summary>
+            Describes an organizer.
+            </summary>
+        </member>
+        <member name="M:LogMeIn.GoToMeeting.Api.Model.Organizer.ToString">
+            <summary>
+            Returns a string representing the current object.
+            </summary>
+            <returns>The Json serialization of the current object.</returns>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.Organizer.lastName">
+            <summary>
+            The organizer's surname
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.Organizer.groupId">
+            <summary>
+            The key of the group this organizer is assigned to
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.Organizer.groupName">
+            <summary>
+            The name of the group this organizer is assigned to
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.Organizer.status">
+            <summary>
+            The status of the organizer, i.e. whether the organizer is able to host meetings
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.Organizer.organizerKey">
+            <summary>
+            The key of the organizer
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.Organizer.email">
+            <summary>
+            The organizer's email address
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.Organizer.firstName">
+            <summary>
+            The organizer's first name
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.Organizer.products">
+            <summary>
+            The products the organizer has access to, can be 'G2M', 'G2W', 'G2T' or 'OPENVOICE'
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.Organizer.maxNumAttendeesAllowed">
+            <summary>
+            The maximum number of attendees allowed at sessions hosted by this organizer.
+            </summary>
+        </member>
+        <member name="T:LogMeIn.GoToMeeting.Api.Model.OrganizerByGroup">
+            <summary>
+            Describes an organizer within a specified group.
+            </summary>
+        </member>
+        <member name="M:LogMeIn.GoToMeeting.Api.Model.OrganizerByGroup.ToString">
+            <summary>
+            Returns a string representing the current object.
+            </summary>
+            <returns>The Json serialization of the current object.</returns>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.OrganizerByGroup.lastName">
+            <summary>
+            The organizer's surname
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.OrganizerByGroup.groupId">
+            <summary>
+            The key of the group
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.OrganizerByGroup.groupName">
+            <summary>
+            The name of the group
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.OrganizerByGroup.status">
+            <summary>
+            The status of the organizer, i.e. whether the organizer is able to host meetings
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.OrganizerByGroup.email">
+            <summary>
+            The organizer's email address
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.OrganizerByGroup.organizerKey">
+            <summary>
+            The key of the organizer
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.OrganizerByGroup.firstName">
+            <summary>
+            The organizer's first name
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.OrganizerByGroup.products">
+            <summary>
+            The products the organizer has access to, can be 'G2M', 'G2W', 'G2T' or 'OPENVOICE'
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.OrganizerByGroup.maxNumAttendeesAllowed">
+            <summary>
+            The maximum number of attendees allowed at sessions held by this organizer
+            </summary>
+        </member>
+        <member name="T:LogMeIn.GoToMeeting.Api.Model.OrganizerReq">
+            <summary>
+            Describes the information required to create an organizer, with or without assigning a group.
+            </summary>
+        </member>
+        <member name="M:LogMeIn.GoToMeeting.Api.Model.OrganizerReq.ToString">
+            <summary>
+            Returns a string representing the current object.
+            </summary>
+            <returns>The Json serialization of the current object.</returns>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.OrganizerReq.organizerEmail">
+            <summary>
+            The email address of the organizer
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.OrganizerReq.firstName">
+            <summary>
+            The first name of the organizer
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.OrganizerReq.lastName">
+            <summary>
+            The surname of the organizer
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.OrganizerReq.productType">
+            <summary>
+            A product the organizer has access to, can be 'G2M', 'G2W', 'G2T' or 'OPENVOICE'
+            </summary>
+        </member>
+        <member name="T:LogMeIn.GoToMeeting.Api.Model.OrganizerShort">
+            <summary>
+            Describes a newly created organizer.
+            </summary>
+        </member>
+        <member name="M:LogMeIn.GoToMeeting.Api.Model.OrganizerShort.ToString">
+            <summary>
+            Returns a string representing the current object.
+            </summary>
+            <returns>The Json serialization of the current object.</returns>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.OrganizerShort.key">
+            <summary>
+            The organizer's key
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.OrganizerShort.email">
+            <summary>
+            The organizer's email address
+            </summary>
+        </member>
+        <member name="T:LogMeIn.GoToMeeting.Api.Model.OrganizerStatus">
+            <summary>
+            Describes the status of an organizer, i.e. whether they are able to host meetings.
+            </summary>
+        </member>
+        <member name="M:LogMeIn.GoToMeeting.Api.Model.OrganizerStatus.ToString">
+            <summary>
+            Returns a string representing the current object.
+            </summary>
+            <returns>The Json serialization of the current object.</returns>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.OrganizerStatus.status">
+            <summary>
+            The status of the organizer can be set to. Use 'suspended' to remove all products. The formerly used status 'active' is now DEPRECATED for this call. To activate the organizer please assign a product. In this case do not pass this parameter
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.OrganizerStatus.productType">
+            <summary>
+            The product you want to add to the organizer. The call must be sent once for each product you want to add
+            </summary>
+        </member>
+        <member name="T:LogMeIn.GoToMeeting.Api.Model.OrganizerStatus.StatusEnum">
+            <summary>
+            The status of the organizer can be set to. Use 'suspended' to remove all products. The formerly used status 'active' is now DEPRECATED for this call. To activate the organizer please assign a product. In this case do not pass this parameter
+            </summary>
+        </member>
+        <member name="F:LogMeIn.GoToMeeting.Api.Model.OrganizerStatus.StatusEnum.suspended">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="T:LogMeIn.GoToMeeting.Api.Model.Product">
+            <summary>
+            The products the organizer has access to, can be 'G2M', 'G2W', 'G2T' or 'OPENVOICE'
+            </summary>
+        </member>
+        <member name="F:LogMeIn.GoToMeeting.Api.Model.Product.G2M">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="F:LogMeIn.GoToMeeting.Api.Model.Product.G2T">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="F:LogMeIn.GoToMeeting.Api.Model.Product.G2W">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="F:LogMeIn.GoToMeeting.Api.Model.Product.OPENVOICE">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="T:LogMeIn.GoToMeeting.Api.Model.ScheduledMeetingByGroup">
+            <summary>
+            Describes a meeting scheduled by an organizer within a specified group.
+            </summary>
+        </member>
+        <member name="M:LogMeIn.GoToMeeting.Api.Model.ScheduledMeetingByGroup.ToString">
+            <summary>
+            Returns a string representing the current object.
+            </summary>
+            <returns>The Json serialization of the current object.</returns>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.ScheduledMeetingByGroup.organizerkey">
+            <summary>
+            The key of the meeting organizer. Field retained for backwards compatibility reasons.
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.ScheduledMeetingByGroup.attendees">
+            <summary>
+            Not in use.
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.ScheduledMeetingByGroup.lastName">
+            <summary>
+            The surname of the meeting organizer.
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.ScheduledMeetingByGroup.groupName">
+            <summary>
+            The name of the group.
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.ScheduledMeetingByGroup.passwordRequired">
+            <summary>
+            Indicates whether a password is required to join the meeting.
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.ScheduledMeetingByGroup.email">
+            <summary>
+            The email address of the meeting organizer.
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.ScheduledMeetingByGroup.subject">
+            <summary>
+            The subject of the meeting.
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.ScheduledMeetingByGroup.meetingId">
+            <summary>
+            The meeting ID.
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.ScheduledMeetingByGroup.organizerKey">
+            <summary>
+            The key of the meeting organizer.
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.ScheduledMeetingByGroup.meetingType">
+            <summary>
+            The meeting type
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.ScheduledMeetingByGroup.firstName">
+            <summary>
+            The first name of the meeting organizer.
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.ScheduledMeetingByGroup.conferenceCallInfo">
+            <summary>
+            Audio options for the meeting.
+            </summary>
+        </member>
+        <member name="T:LogMeIn.GoToMeeting.Api.Model.StartUrl">
+            <summary>
+            Host URL that can be used to start a meeting
+            </summary>
+        </member>
+        <member name="M:LogMeIn.GoToMeeting.Api.Model.StartUrl.ToString">
+            <summary>
+            Returns a string representing the current object.
+            </summary>
+            <returns>The Json serialization of the current object.</returns>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.StartUrl.hostURL">
+            <summary>
+            The host URL that can be used to start a meeting.
+            </summary>
+        </member>
+        <member name="T:LogMeIn.GoToMeeting.Api.Model.Status">
+            <summary>
+            The status of an organizer (or group), i.e. whether the organizer (or the members of the group respectively) are able to host meetings
+            </summary>
+        </member>
+        <member name="F:LogMeIn.GoToMeeting.Api.Model.Status.active">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="F:LogMeIn.GoToMeeting.Api.Model.Status.suspended">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="T:LogMeIn.GoToMeeting.Api.Model.UpcomingMeeting">
+            <summary>
+            Describes an upcoming meeting.
+            </summary>
+        </member>
+        <member name="M:LogMeIn.GoToMeeting.Api.Model.UpcomingMeeting.ToString">
+            <summary>
+            Returns a string representing the current object.
+            </summary>
+            <returns>The Json serialization of the current object.</returns>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.UpcomingMeeting.startTime">
+            <summary>
+            The time the meeting instance will start
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.UpcomingMeeting.lastName">
+            <summary>
+            The surname of the meeting organizer
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.UpcomingMeeting.accountKey">
+            <summary>
+            The key of the company account
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.UpcomingMeeting.passwordRequired">
+            <summary>
+            Indicates whether a password is required to join the meeting or not
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.UpcomingMeeting.email">
+            <summary>
+            The meeting organizer's email address
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.UpcomingMeeting.status">
+            <summary>
+            The meeting status, i.e whether the meeting is running or not
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.UpcomingMeeting.subject">
+            <summary>
+            The subject of the meeting
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.UpcomingMeeting.locale">
+            <summary>
+            The current language setting of the organizer in the web portal
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.UpcomingMeeting.organizerKey">
+            <summary>
+            The key of the meeting organizer
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.UpcomingMeeting.meetingId">
+            <summary>
+            The meeting ID
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.UpcomingMeeting.meetingType">
+            <summary>
+            The meeting type
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.UpcomingMeeting.firstName">
+            <summary>
+            The meeting organizer's first name
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.UpcomingMeeting.endTime">
+            <summary>
+            The time the meeting instance ended
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.UpcomingMeeting.conferenceCallInfo">
+            <summary>
+            Audio options for the meeting
+            </summary>
+        </member>
+        <member name="T:LogMeIn.GoToMeeting.Api.Model.UpcomingMeetingByGroup">
+            <summary>
+            Describes an upcoming meeting of a group.
+            </summary>
+        </member>
+        <member name="M:LogMeIn.GoToMeeting.Api.Model.UpcomingMeetingByGroup.ToString">
+            <summary>
+            Returns a string representing the current object.
+            </summary>
+            <returns>The Json serialization of the current object.</returns>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.UpcomingMeetingByGroup.startTime">
+            <summary>
+            The time the meeting instance will start
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.UpcomingMeetingByGroup.lastName">
+            <summary>
+            The surname of the meeting organizer
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.UpcomingMeetingByGroup.accountKey">
+            <summary>
+            The key of the company account
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.UpcomingMeetingByGroup.passwordRequired">
+            <summary>
+            Indicates whether a password is required to join the meeting or not
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.UpcomingMeetingByGroup.email">
+            <summary>
+            The meeting organizer's email address
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.UpcomingMeetingByGroup.status">
+            <summary>
+            DEPRECATED. This status flag is always set to 'INACTIVE'. It exists for backwards compatibility reasons only
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.UpcomingMeetingByGroup.subject">
+            <summary>
+            The subject of the meeting
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.UpcomingMeetingByGroup.locale">
+            <summary>
+            The current language setting of the organizer in the web portal
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.UpcomingMeetingByGroup.organizerKey">
+            <summary>
+            The key of the meeting organizer
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.UpcomingMeetingByGroup.meetingId">
+            <summary>
+            The meeting ID
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.UpcomingMeetingByGroup.meetingType">
+            <summary>
+            The meeting type
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.UpcomingMeetingByGroup.firstName">
+            <summary>
+            The meeting organizer's first name
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.UpcomingMeetingByGroup.endTime">
+            <summary>
+            The time the meeting instance ended
+            </summary>
+        </member>
+        <member name="P:LogMeIn.GoToMeeting.Api.Model.UpcomingMeetingByGroup.groupName">
+            <summary>
+            The name of the group the meeting belongs to
+            </summary>
+        </member>
+    </members>
+</doc>

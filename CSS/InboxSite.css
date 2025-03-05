@@ -1,0 +1,193 @@
+﻿/*-------------------------- accordion left menu-----------------------------*/
+
+ul
+ol,
+li {
+    margin: 0;
+    padding: 0;
+    font-weight: 300;
+}
+.accordion .card,
+.accordion .card a {
+    color: #424e5d;
+    text-decoration: none;
+    display:block;
+}
+
+.accordion .card-header {
+    background: linear-gradient(#fff, #f1f1f1);
+    padding: .5rem .8rem;
+    position: relative;
+    border: 1px solid #ddd;
+    cursor: pointer;
+}
+
+    .accordion .card-header:hover {
+        background: linear-gradient(#f1f1f1, #e8e8e8);
+    }
+
+.accordion .fa {
+    width: 20px;
+    margin-right: .25rem;
+}
+
+.accordion .toggly {
+    font-size: .8rem;
+    line-height: .8rem;
+    opacity: 0.7;
+    position: absolute;
+    right: 16px;
+    top: 16px;
+    width: 14px;
+    margin: 0;
+}
+
+    .accordion .toggly:hover {
+        opacity: 1;
+    }
+
+.accordion .card-body {
+    padding: 0;
+}
+
+.accordion ul {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    padding-left: 0;
+    margin-bottom: 0;
+}
+
+    .accordion ul > li {
+        border-radius: 0;
+        border-width: 1px 0 1px 0;
+        padding-left: 30px;
+        background: #FFF;
+        font-weight: 400;
+        padding: .65rem 1.25rem;
+        border: 1px solid rgba(0,0,0,.125);
+        margin-bottom: -1px;
+    }
+
+        .accordion ul > li:hover {
+            background: #007bff;
+        }
+
+            .accordion ul > li:hover a {
+                color: #fff !important;
+                text-decoration: none;
+            }
+
+            .accordion ul > li:hover .badge {
+                background: #fff;
+                color: #007bff;
+            }
+
+        .accordion ul > li a {
+            color: #61656b;
+            display: block;
+            position: relative;
+        }
+
+        .accordion ul > li .badge {
+            min-width: 36px;
+            position: absolute;
+            right: 0;
+            top: 2px;
+        }
+
+.mail-row-default {
+    color: #202124;
+    background: rgba(255,255,255,0.902);
+    font-weight: 600;
+    cursor: pointer;
+}
+td.valign {
+    vertical-align:middle !important;
+}
+
+.mail-row-after-click {
+    background: rgba(242,245,245,0.8);
+    color: #202124;
+    cursor: pointer;
+}
+
+.all_mails,
+.reply_mails {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #FFF;
+}
+
+[class*="View"] {
+    padding: 15px;
+}
+
+.col-80 {
+    width: 80%;
+}
+
+.col-20 {
+    width: 20%;
+}
+
+.fas.mr-6 {
+    margin-right: 6px;
+}
+
+.input-group-text {
+    min-width: 80px;
+}
+
+    .input-group-text.no-bg {
+        background: transparent;
+        border-color: transparent;
+    }
+
+.btn.send-btn {
+    height: 66px;
+}
+
+/*-------------- question section ------------*/
+.section-qus {
+    background: #b6ada7;
+    font-size: .95rem;
+}
+
+.Qst_Header {
+    background-color: #97dbea;
+    color: #31708f;
+    padding: 20px 2px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+    .Qst_Header > div:first-child {
+        text-align: center;
+        padding: 0 !important;
+    }
+
+    .Qst_Header > div > span.Qst-no {
+        width: 28px;
+        height: 28px;
+        line-height: 26px;
+        display: inline-block;
+        background: #fff;
+        border-radius: 50%;
+        text-align: center;
+        border: 1px solid #195cac;
+        font-weight: 600;
+    }
+
+    .Qst_Header > div > p {
+        margin-bottom: 10px;
+        line-height: 22px;
+    }
+
+.qusgroup_option {
+    padding: 5pt 10pt;
+    background: #fff;
+    margin-bottom: 10px;
+}
