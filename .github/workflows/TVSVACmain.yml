@@ -52,15 +52,11 @@ jobs:
       - name: Publish to folder
         run: msbuild Deloitte_TVS_VAC.sln /nologo /verbosity:m /t:Build /t:pipelinePreDeployCopyAllFilesToOneFolder /p:_PackageTempDir="published"
 
-      - name: Login to Azure
-        uses: azure/login@v1
-        with:
-          # creds: '{"clientId":"${{ secrets.AZURE_CLIENT_ID }}","clientSecret":"${{ secrets.AZURE_CLIENT_SECRET }}","subscriptionId":"${{ secrets.AZURE_SUBSCRIPTION_ID }}","tenantId":"${{ secrets.AZURE_TENANT_ID }}"}'
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
-          
+               
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v2
         with:
-          app-name: 'tvsm'
-          slot-name: 'staging'
+          app-name: 'TVSUAT'
+          slot-name: 'Production'
           package: ./
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_20E0088D26E7400A97FB47C9C1AF71E1 }}
