@@ -21,7 +21,7 @@ jobs:
         uses: NuGet/setup-nuget@v1.0.5
 
       - name: Restore NuGet packages
-        run: nuget restore Deloitte_TVS_VAC.sln
+        run: nuget restore D:\a\deloitteTVS_VAC\Deloitte_TVS_VAC.sln
 
       - name: clean the solution
         run: msbuild D:\a\deloitteTVS_VAC\Deloitte_TVS_VAC.sln /t:Clean
