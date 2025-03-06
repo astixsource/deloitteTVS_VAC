@@ -1,18 +1,19 @@
-name: CI/CD Pipeline for ASP.NET Web App
+name: Build and deploy ASP app to Azure Web App - CKBirlaProd
 
 on:
   push:
     branches:
-      - main  # Trigger the workflow on pushes to the main branch
+      - main
+  workflow_dispatch:
 
 jobs:
-  # Continuous Integration Job
-  build-and-test:
+  build:
     runs-on: windows-latest
+    permissions:
+      contents: read
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
       - name: Setup MSBuild path
         uses: microsoft/setup-msbuild@v1.0.2
@@ -21,40 +22,22 @@ jobs:
         uses: NuGet/setup-nuget@v1.0.5
 
       - name: Restore NuGet packages
-        run: nuget restore Deloitte_TVS_VAC.sln
+        run: nuget restore
 
-      - name: clean the solution
-        run: msbuild Deloitte_TVS_VAC.sln /t:Clean
+      - name: Build and Publish using MSBuild
+        run: msbuild Deloitte_TVS_VAC.sln /p:DeployOnBuild=true /p:Configuration=Release /p:OutputPath="published"
 
-      - name: Build the solution
-        run: msbuild Deloitte_TVS_VAC.sln /p:Configuration=Release /p:Platform="Any CPU"
-
-
-      #- name: Run Unit Tests
-      #  run: dotnet test Deloitte_TVS_VAC.sln --logger "trx;LogFileName=TestResults.trx" --verbosity normal
-
-  # Continuous Deployment Job with Manual Approval
   deploy:
-    needs: build-and-test  # Runs only if CI job succeeds
     runs-on: windows-latest
-    #environment: Production  # This is where manual approval is required
+    needs: build
     environment:
-      name: 'Staging'
+      name: 'Production'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Setup MSBuild path
-        uses: microsoft/setup-msbuild@v1.0.2
-
-      - name: Publish to folder
-        run: msbuild Deloitte_TVS_VAC.sln /nologo /verbosity:m /t:Build /t:pipelinePreDeployCopyAllFilesToOneFolder /p:_PackageTempDir="published"
-
-               
       - name: Deploy to Azure Web App
-        uses: azure/webapps-deploy@v2
+        id: deploy-to-webapp
+        uses: azure/webapps-deploy@v3
         with:
           app-name: 'TVSUAT'
           slot-name: 'Production'
